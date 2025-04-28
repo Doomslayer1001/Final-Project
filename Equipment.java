@@ -1,4 +1,4 @@
-
+import java.util.HashSet;
 /**
  * Write a description of class Equipment here.
  *
@@ -8,7 +8,7 @@
 public class Equipment
 {
     private String name;
-
+    private HashSet<Equipment> Equipe;
     public Equipment(String name)
     {
     this.name = name;
