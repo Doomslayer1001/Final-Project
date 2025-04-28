@@ -14,5 +14,18 @@ public class Strava
     {
         athletes = new ArrayList<>();
     }
-
+    
+    public void addAthletes(Athlete athlete){
+      athletes.add(athlete);  
+    }
+    /**
+    public void show()
+    {
+        // display all posts
+        for(Athlete athlethe : athletes) {
+            
+            System.out.println();   // empty line between posts
+        }
+    }
+*/
 }
