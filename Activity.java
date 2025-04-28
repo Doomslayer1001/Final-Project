@@ -24,4 +24,29 @@ public class Activity
     public String getName(){
      return this.name;
     }
+    
+    public double getDistance()
+    {
+         
+       return this.distance;
+    }
+    
+    
+    public double getDuration()
+    {
+        return this.duration;
+    }
+    
+    public String getDescription()
+    {
+        return this.description;
+    }
+    
+    
+    public Modality getModality()
+    {
+        
+      return this.modality;
+    }
+    
 }
