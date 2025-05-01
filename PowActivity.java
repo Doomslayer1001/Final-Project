@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class PowActivities here.
  *
@@ -7,10 +7,16 @@
  */
 public class PowActivity extends Activity
 {
-    private Equipment equipment;
+    
+    ArrayList<Equipment> equip;
     public PowActivity(String name, double distance, String description, Modality modality, 
-                           double duration, Equipment equipment) {
+                           double duration) {
         super(name, distance, description, modality, duration);
-        this.equipment = equipment;
+        equip = new ArrayList<>();
+    }
+    
+    public void addEquipment(Equipment equip){
+        this.equip.add(equip);
+    
     }
 }
