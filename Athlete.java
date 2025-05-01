@@ -14,14 +14,18 @@ public class Athlete
     private double weight;// Athlete's weight (used for calorie calculations)
     private double height;
     private int yearOfBirth; 
+    private Strava strava;
 
-    public Athlete(String name, Gender gender, double weight,double height, int yearOfBirth) {
+    public Athlete(Strava strava,String name, Gender gender, double weight,double height, int yearOfBirth) {
+        this.strava = strava;
         this.name = name;
         this.gender = gender;
         this.weight = weight;
         this.height = height;
         this.yearOfBirth = yearOfBirth;
         this.activities = new ArrayList<>();
+        
+        //Strava.addAthletes(this);
     }
     
     public String getName(){
@@ -32,10 +36,17 @@ public class Athlete
       this.activities.add(activity);  
     }
     
+    public void displayAllMyActivities(){
+        System.out.println("My activites are: ");
+        for (Activity a:activities){    
+          System.out.println(a);
+        }
+    }
+    
     public void athleteInfo()
     {
-        System.out.println("Name: ");
-        System.out.println("Gender: ");
+        System.out.println("Name: "+ this.name);
+        System.out.println("Gender: "+ this.gender.toString());
         System.out.println("Height: "+height+" Weight: "+weight);
         System.out.println("Year of birth: "+ yearOfBirth);
         System.out.println("My activities: "+activities);
