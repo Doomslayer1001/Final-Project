@@ -8,6 +8,7 @@ import java.util.HashMap;
  */
 public class Athlete
 {
+    private int id;
     private String name;               // Name of the athlete
     private Gender gender;             // Gender of the athlete
     private ArrayList<Activity> activities;  // List of activities the athlete has performed
@@ -24,12 +25,17 @@ public class Athlete
         this.height = height;
         this.yearOfBirth = yearOfBirth;
         this.activities = new ArrayList<>();
+        this.id=strava.giveId();
         
-        //Strava.addAthletes(this);
+        strava.addAthletes(this);
     }
     
     public String getName(){
      return this.name;
+    }
+    
+    public int getId(){
+     return this.id;
     }
     
     public void addActivity(Activity activity){
