@@ -27,5 +27,11 @@ public class Strava
             System.out.println(athlete);   // empty line between posts
         }
     }
-
+    
+    private void Choice(){
+        Equipment bike = new Equipment("Bike", 1.5);
+        Equipment skate = new Equipment("Skate",4.5);
+        Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
+    }
+    
 }

@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+import java.awt.Choice;
+
 /**
  * Write a description of class PowActivities here.
  *
@@ -7,16 +8,16 @@ import java.util.ArrayList;
  */
 public class PowActivity extends Activity
 {
-    
-    ArrayList<Equipment> equip;
+
     public PowActivity(String name, double distance, String description, Modality modality, 
                            double duration) {
         super(name, distance, description, modality, duration);
-        equip = new ArrayList<>();
+        Choice Equipment = new Choice();
     }
     
-    public void addEquipment(Equipment equip){
-        this.equip.add(equip);
-    
+    public void chooseEquipment(){
+        //Equipment.add("Please select");
+        
+        
     }
 }

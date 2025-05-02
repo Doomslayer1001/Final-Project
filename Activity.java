@@ -26,24 +26,6 @@ public class Activity
         
     }
     
-    private void Equipment(){
-        Equipment bike = new Equipment("Bike", 1.5);
-        Equipment skate = new Equipment("Skate",4.5);
-        Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
-
-        this.duration = duration;
-        ArrayList<String> activities = new ArrayList<String>();
-        activities.add("hiking");
-        activities.add("swimming");
-        activities.add("cycling");
-        activities.add("skating");
-        activities.add("race walking");
-        activities.add("sprints");
-        activities.add("pole vault");
-        
-
-    }
-    
     public String getName(){
      return this.name;
     }
@@ -52,7 +34,6 @@ public class Activity
     {
        return this.distance;
     }
-    
     
     public double getDuration()
     {

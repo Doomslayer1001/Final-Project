@@ -14,7 +14,6 @@ public class Equipment
     {
         this.name = name;
         this.weight = weight;
-        
     }
     
        public String  getDescription() {
