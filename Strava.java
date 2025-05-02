@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Write a description of class Strava here.
@@ -8,24 +8,29 @@ import java.util.ArrayList;
  */
 public class Strava
 {
-    private ArrayList<Athlete> athletes;
-     
+    private HashMap<Integer,String> athletes;
+    private int idAthletes=0;
     public Strava()
     {
-        athletes = new ArrayList<>();
+        athletes = new HashMap<>();
     }
     
     public void addAthletes(Athlete athlete){
-      athletes.add(athlete);  
+     athletes.put(athlete.getId(),athlete.getName());   
     }
     
     public void listAllAthletes()
     {
+        System.out.println("Found athletes are: "); 
         // display all athletes
-        for(Athlete athlete : athletes) {
-            System.out.println("Found athletes are: ");          
-            System.out.println(athlete);   // empty line between posts
+        for (Integer id: athletes.keySet()){
+            System.out.println("Id: " +id + " Name: "+ athletes.get(id));
         }
+    }
+    
+    public int giveId(){
+        idAthletes++;    
+        return idAthletes;    
     }
 
 }

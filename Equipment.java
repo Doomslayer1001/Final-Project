@@ -11,9 +11,6 @@ public class Equipment
     public Equipment(String name)
     {
         this.name = name;
-        
-
     }
-    
-   
+       
 }

@@ -26,8 +26,7 @@ public class Activity
     }
     
     public double getDistance()
-    {
-         
+    {        
        return this.distance;
     }
     
@@ -44,8 +43,7 @@ public class Activity
     
     
     public Modality getModality()
-    {
-        
+    {       
       return this.modality;
     }
     
