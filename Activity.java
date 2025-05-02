@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Activity
 {
-    private String name;               // Name of the activity 
+     
     private double distance;           // Distance of the activity 
     private String description;        // Description of the activity
     private Modality modality;         
@@ -16,8 +16,8 @@ public class Activity
 
     private ArrayList<String> activities;
 
-    public Activity(String name, double distance, String description, Modality modality, double duration) {
-        this.name = name;
+    public Activity( double distance, String description, Modality modality, double duration) {
+        
         this.distance = distance;
         this.description = description;
         this.modality = modality;
@@ -26,9 +26,7 @@ public class Activity
         
     }
     
-    public String getName(){
-     return this.name;
-    }
+   
     
     public double getDistance()
 
