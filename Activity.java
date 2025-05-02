@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Write a description of class Activity here.
@@ -12,13 +13,22 @@ public class Activity
     private String description;        // Description of the activity
     private Modality modality;         
     private double duration;  
-    
+    private ArrayList<String> activities;
     public Activity(String name, double distance, String description, Modality modality, double duration) {
         this.name = name;
         this.distance = distance;
         this.description = description;
         this.modality = modality;
-        this.duration = duration;   
+        this.duration = duration;
+        ArrayList<String> activities = new ArrayList<String>();
+        activities.add("hiking");
+        activities.add("swimming");
+        activities.add("cycling");
+        activities.add("skating");
+        activities.add("race walking");
+        activities.add("sprints");
+        activities.add("pole vault");
+        
     }
     
     public String getName(){
