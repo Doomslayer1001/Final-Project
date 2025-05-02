@@ -9,15 +9,13 @@ import java.awt.Choice;
 public class PowActivity extends Activity
 {
 
-    public PowActivity(String name, double distance, String description, Modality modality, 
+    public PowActivity(double distance, String description, Modality modality, 
                            double duration) {
-        super(name, distance, description, modality, duration);
+        super( distance, description, modality, duration);
         Choice Equipment = new Choice();
     }
     
     public void chooseEquipment(){
-        //Equipment.add("Please select");
-        
-        
+        //Equipment.add("Please select");       
     }
 }

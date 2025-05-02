@@ -16,7 +16,7 @@ public class Activity
 
     private ArrayList<String> activities;
 
-    public Activity( double distance, String description, Modality modality, double duration) {
+    public Activity(double distance, String description, Modality modality, double duration) {
         
         this.distance = distance;
         this.description = description;
@@ -26,12 +26,9 @@ public class Activity
         
     }
     
-   
-    
     public double getDistance()
 
     {        
-
        return this.distance;
     }
     

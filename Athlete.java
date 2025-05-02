@@ -30,6 +30,13 @@ public class Athlete
         strava.addAthletes(this);
     }
     
+    public Athlete(Strava strava){
+        this.strava = strava;   
+        this.id=strava.giveId();
+        
+        strava.addAthletes(this);
+    }
+    
     public String getName(){
      return this.name;
     }
@@ -38,8 +45,8 @@ public class Athlete
      return this.id;
     }
     
-    public void addActivity(Activity activity){
-      this.activities.add(activity);  
+    public void addActivity(){
+    //Activity activity = new Activity(); 
     }
     
     public void displayAllMyActivities(){
