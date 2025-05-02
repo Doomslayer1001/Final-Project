@@ -8,9 +8,19 @@
 public class Equipment
 {
     private String name;
-    public Equipment(String name)
+    private double weight;
+    
+    public Equipment(String name, double weight)
     {
         this.name = name;
+
+        this.weight = weight;
+        
+
     }
-       
+    
+       public String  getDescription() {
+        return name + ": " + " (Weight: " + weight + "kg)";
+    }
+
 }

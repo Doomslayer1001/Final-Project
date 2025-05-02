@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.HashMap;
 /**
  * Write a description of class Athlete here.
  *
