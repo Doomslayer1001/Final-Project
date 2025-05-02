@@ -15,11 +15,7 @@ public class Equipment
         this.name = name;
 
         this.weight = weight;
-<<<<<<< HEAD
-=======
-        
 
->>>>>>> 5b2ebba431fd487bd61860c0db213c48cc91cac1
     }
     
        public String  getDescription() {
