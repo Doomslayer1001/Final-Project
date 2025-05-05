@@ -45,6 +45,10 @@ public class Athlete
      return this.id;
     }
     
+    public double getWeight(){
+        return this.weight;
+    }
+    
     public void addActivity(){
     //Activity activity = new Activity(); 
     }
@@ -54,6 +58,22 @@ public class Athlete
         for (Activity a:activities){    
           System.out.println(a);
         }
+    }
+    
+    public double getTotalDistance() {
+        double totalDistance = 0;
+        for (Activity activity : activities) {
+            totalDistance += activity.getDistance();
+        }
+        return totalDistance;
+    }
+    
+       public double getTotalCaloriesBurned() {
+        double totalCalories = 0;
+        for (Activity activity : activities) {
+            totalCalories += activity.getCaloriesBurned();
+        }
+        return totalCalories;
     }
     
     public void athleteInfo()

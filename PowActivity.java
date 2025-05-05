@@ -11,8 +11,7 @@ public class PowActivity extends Activity
 
     public PowActivity(double distance, String description, Modality modality, 
                            double duration) {
-
-        
+  
         super(distance, description, modality, duration);
         
     }
