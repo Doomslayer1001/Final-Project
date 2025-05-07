@@ -16,7 +16,7 @@ public class Athlete
     private double height;
     private int yearOfBirth; 
     private Strava strava;
-
+    
     public Athlete(Strava strava,String name, Gender gender, double weight,double height, int yearOfBirth) {
         this.strava = strava;
         this.name = name;
