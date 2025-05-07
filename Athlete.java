@@ -27,14 +27,14 @@ public class Athlete
         this.activities = new ArrayList<>();
         this.id=strava.giveId();
         
-        strava.addAthletes(this);
+        //strava.addAthletes(this);
     }
     
     public Athlete(Strava strava){
         this.strava = strava;   
         this.id=strava.giveId();
         
-        strava.addAthletes(this);
+        //strava.addAthletes(this);
     }
     
     public String getName(){

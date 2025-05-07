@@ -1,5 +1,5 @@
 import java.util.HashMap;
-
+import java.util.Scanner;
 /**
  * Write a description of class Strava here.
  *
@@ -15,8 +15,14 @@ public class Strava
         athletes = new HashMap<>();
     }
     
-    public void addAthletes(Athlete athlete){
-     athletes.put(athlete.getId(),athlete.getName());   
+    public void addAthletes(){
+        Scanner scan =new Scanner(System.in);
+        System.out.println("What is your name?");
+        String name = scan.next();
+        System.out.println("What is your last name?");
+        String last_name = scan.next();
+        Choice();
+        //athletes.put(athlete.getId(),athlete.getName());   
     }
     
     public void listAllAthletes()
@@ -29,12 +35,36 @@ public class Strava
     }
     
 
-    private void Choice(){
+    private Equipment Choice(){
         Equipment bike = new Equipment("Bike", 1.5);
         Equipment skate = new Equipment("Skate",4.5);
         Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
+        Scanner scan =new Scanner(System.in);
+        Equipment chosen = null;
+        while(chosen == null){
+        System.out.println("Choose an equipment");
+        System.out.println("1. Bike");
+        System.out.println("2. Skate");
+        System.out.println("3. Poll");
+        System.out.println("please choose an equipment");
+        int value = scan.nextInt();
+        if (value == 1 ){
+            chosen = bike;
+        }
+        else if( value == 2){
+            chosen = skate;
+        }
+        else if (value == 3){
+            chosen = poll;
+        }
+        else
+        {
+            System.out.println("Invalid option try again");
+        }
+        
     }
-    
+    return chosen;
+}
 
     public int giveId(){
         idAthletes++;    
