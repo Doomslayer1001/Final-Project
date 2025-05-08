@@ -15,25 +15,16 @@ public class Athlete
     private double weight;// Athlete's weight (used for calorie calculations)
     private double height;
     private int yearOfBirth; 
-    private Strava strava;
     
     public Athlete(String name, Gender gender, double weight,double height, int yearOfBirth) {
-        this.strava = strava;
         this.name = name;
         this.gender = gender;
         this.weight = weight;
         this.height = height;
         this.yearOfBirth = yearOfBirth;
         this.activities = new ArrayList<>();
-        this.id=strava.giveId();
+       // this.id=Strava.giveId();
         
-    }
-    
-    public Athlete(Strava strava){
-        this.strava = strava;   
-        this.id=strava.giveId();
-        
-        //strava.addAthletes(this);
     }
     
     public String getName(){

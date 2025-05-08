@@ -8,19 +8,20 @@ import java.util.Scanner;
  */
 public class Strava
 {
-    private HashMap<Integer,String> athletes;
+    private HashMap<Integer,Athlete> athletes;
+    private HashMap<Athlete,String> accounts;
     private int idAthletes=0;
     public Strava()
     {
         athletes = new HashMap<>();
     }
     
-    public void addAthletes(){
+    public void startStrava(){
         Scanner scan =new Scanner(System.in);
-        mainMenu();
+       // mainMenu();
+        logIn();
         String menuequipment = scan.next();
-        Choice();
-        //athletes.put(athlete.getId(),athlete.getName());   
+        Choice();  
     }
     
     public void listAllAthletes()
@@ -31,6 +32,7 @@ public class Strava
             System.out.println("Id: " +id + " Name: "+ athletes.get(id));
         }
     }
+    
        private Equipment Choice()
     {
         Equipment bike = new Equipment("Bike", 1.5);
@@ -91,7 +93,16 @@ public class Strava
     }
     
     public void logIn(){
-        
+        Scanner logInScanner =new Scanner(System.in);
+        System.out.println("-------------------------------------------"); 
+        System.out.print("Username: "); 
+        String username = logInScanner.next(); 
+        System.out.print("Password: "); 
+        String password = logInScanner.next();
+      
+        while (username != null && password!= null){
+            
+        }
     }
     
     public void myAccount(){
@@ -102,6 +113,7 @@ public class Strava
         System.out.println("[2] List all my activities");
         System.out.println("[3] Calculate my total distance");
         System.out.println("[4] Calculate my burned calories");
+        System.out.println("[5] My profile");
         System.out.println("[0] Close my session");
     }
     
