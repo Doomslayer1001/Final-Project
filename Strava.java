@@ -85,7 +85,26 @@ public class Strava
     }
     
     public void newAthleteStrava(){
+            
+    }
+    
+    public void newEquipmentStrava(){
         
+    }
+    
+    public void logIn(){
+        
+    }
+    
+    public void myAccount(){
+        System.out.println("-------------------------------------------");  
+        System.out.println("                 MY ACCOUNT");   
+        System.out.println("-------------------------------------------"); 
+        System.out.println("[1] New activity");
+        System.out.println("[2] List all my activities");
+        System.out.println("[3] Calculate my total distance");
+        System.out.println("[4] Calculate my burned calories");
+        System.out.println("[0] Close my session");
     }
     
     public void getDetailsMenu(){
