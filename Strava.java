@@ -16,12 +16,9 @@ public class Strava
     }
     
     public void addAthletes(){
-        System.out.println("---Menu---");
         Scanner scan =new Scanner(System.in);
-        System.out.println("What is your name?");
-        String name = scan.next();
-        System.out.println("What is your last name?");
-        String last_name = scan.next();
+        mainMenu();
+        String menuequipment = scan.next();
         Choice();
         //athletes.put(athlete.getId(),athlete.getName());   
     }
@@ -72,6 +69,7 @@ public class Strava
     }
     
     public void mainMenu(){
+        Scanner scan =new Scanner(System.in);
         System.out.println("-------------------------------------------");  
         System.out.println("                   MENU");   
         System.out.println("-------------------------------------------");
@@ -81,7 +79,7 @@ public class Strava
         System.out.println("[c] Access to your account");
         System.out.println("[d] Get details ");
         System.out.println("[e] Quit");
-        
+        String  menu = scan.next();
     }
     
     public void newAthleteStrava(){
