@@ -14,9 +14,9 @@ public class Activity
     private Modality modality;         
     private double duration;  
     private double caloriesBurned; 
-
+    private Athlete athlete;
     private ArrayList<String> activities;
-
+    
     public Activity(double distance, String description, Modality modality, double duration) {
         
         this.distance = distance;
@@ -76,5 +76,9 @@ public class Activity
     
     public double getCaloriesBurned() {
         return caloriesBurned;
+    }
+    public void totalDistance () {
+        String myStrg = "Activity: " + modality + " | Distance: " + distance + " km | Athlete: " + athlete.getName();
+        System.out.println(myStrg.toString());
     }
 }
