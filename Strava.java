@@ -10,6 +10,7 @@ public class Strava
 {
     private HashMap<Integer,String> athletes;
     private int idAthletes=0;
+    private Athlete athlete;
     public Strava()
     {
         athletes = new HashMap<>();
@@ -85,7 +86,13 @@ public class Strava
     }
     
     public void newAthleteStrava(){
-        
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter athlete's name:");
+       String name = scanner.nextLine();
+       
+       System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
+       
+      
     }
     
     public void getDetailsMenu(){
