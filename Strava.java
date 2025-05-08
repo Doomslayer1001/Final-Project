@@ -68,7 +68,7 @@ public class Strava
         return idAthletes;    
     }
     
-    public void mainMenu(){
+        public void mainMenu(){
         Scanner scan =new Scanner(System.in);
         System.out.println("-------------------------------------------");  
         System.out.println("                   MENU");   
@@ -80,20 +80,29 @@ public class Strava
         System.out.println("[4] Get details ");
         System.out.println("[5] Quit");
         int menu = scan.nextInt();
-        if (menu == 1){
+        String choose = null;
+        while (choose == null){
+            if (menu == 1){
             newAthleteStrava();
-        }
-        else if (menu == 2){
+            }
+            else if (menu == 2){
             Choice();
-        }
-        else if (menu == 3){
+            }
+            else if (menu == 3){
             System.out.println("hello");
-        }
-        else if (menu == 4){
+            }
+            else if (menu == 4){
             getDetailsMenu();
+            scan.close();
+                    }
+            else if (menu == 5){
+                System.out.println("Thank you for using our service.");
+                break;
+            }
+            scan.close();
+            
         }
     }
-    
     public void newAthleteStrava(){
        Scanner scanner = new Scanner(System.in);
        System.out.println("Enter athlete's name:");
@@ -120,11 +129,16 @@ public class Strava
             
             int value = scan.nextInt();
             if(value == 1){
-            System.out.println("Boys");
+                System.out.println("Boys");
             }
             else if(value == 0){
                 mainMenu();
+                break;
             }
+            else{
+                System.out.println("Invalid input");
+            }
+            
         }
     }
     
