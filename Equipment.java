@@ -13,13 +13,14 @@ public class Equipment
     public Equipment(String name, double weight)
     {
         this.name = name;
-
         this.weight = weight;
-
     }
     
        public String  getDescription() {
         return name + ": " + " (Weight: " + weight + "kg)";
     }
 
+    public String toString(){
+        return getDescription();
+    }
 }

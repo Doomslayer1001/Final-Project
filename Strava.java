@@ -17,12 +17,9 @@ public class Strava
     }
     
     public void addAthletes(){
-        System.out.println("---Menu---");
         Scanner scan =new Scanner(System.in);
-        System.out.println("What is your name?");
-        String name = scan.next();
-        System.out.println("What is your last name?");
-        String last_name = scan.next();
+        mainMenu();
+        String menu = scan.next();
         Choice();
         //athletes.put(athlete.getId(),athlete.getName());   
     }
@@ -35,14 +32,16 @@ public class Strava
             System.out.println("Id: " +id + " Name: "+ athletes.get(id));
         }
     }
+    
        private Equipment Choice()
     {
         Equipment bike = new Equipment("Bike", 1.5);
         Equipment skate = new Equipment("Skate",4.5);
         Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
-        Scanner scan =new Scanner(System.in);
+        
+        Scanner scan = new Scanner(System.in);
         Equipment chosen = null;
-            while(chosen == null){
+        while(chosen == null){
             System.out.println("Choose an equipment");
             System.out.println("1. Bike");
             System.out.println("2. Skate");
@@ -50,19 +49,20 @@ public class Strava
             System.out.println("please choose an equipment");
             int value = scan.nextInt();
             if (value == 1 ){
-            chosen = bike;
+                chosen = bike;
+                System.out.println(bike);
             }
             else if( value == 2){
-            chosen = skate;
+                chosen = skate;
+                System.out.println(skate);
             }
             else if (value == 3){
-            chosen = poll;
+                chosen = poll;
+                System.out.println(poll);
             }
-            else
-            {
-            System.out.println("Invalid option try again");
-            }
-        
+            else{
+                System.out.println("Invalid option try again");
+            }        
         }
         return chosen;
     }
@@ -73,16 +73,20 @@ public class Strava
     }
     
     public void mainMenu(){
+        Scanner scan =new Scanner(System.in);
         System.out.println("-------------------------------------------");  
         System.out.println("                   MENU");   
         System.out.println("-------------------------------------------");
         System.out.println("Choose among these options what to execute:"); System.out.println("");
-        System.out.println("[a] New athlete");
-        System.out.println("[b] New Equipment");
-        System.out.println("[c] Access to your account");
-        System.out.println("[d] Get details ");
-        System.out.println("[e] Quit");
-        
+        System.out.println("[1] New athlete");
+        System.out.println("[2] New Equipment");
+        System.out.println("[3] Access to your account");
+        System.out.println("[4] Get details ");
+        System.out.println("[5] Quit");
+        int menu = scan.nextInt();
+        if (menu == 4){
+            getDetailsMenu();
+        }
     }
     
     public void newAthleteStrava(){
@@ -95,17 +99,26 @@ public class Strava
       
     }
     
-    public void getDetailsMenu(){
-        System.out.println("-------------------------------------------");  
-        System.out.println("                   MENU");   
-        System.out.println("-------------------------------------------");
-        System.out.println("Choose among these options what to execute:"); System.out.println("");  
-        System.out.println("[1] List all athletes");
-        System.out.println("[2] List all activities");
-        System.out.println("[3] List all activities by athlete");
-        System.out.println("[4] List all activities by mode");
-        System.out.println("[0] Back");
-        
+    public String getDetailsMenu(){
+        String choose = null;
+        Scanner scan =new Scanner(System.in);
+        while (choose == null){
+            System.out.println("-------------------------------------------");  
+            System.out.println("                   MENU");   
+            System.out.println("-------------------------------------------");
+            System.out.println("Choose among these options what to execute:"); System.out.println("");  
+            System.out.println("[1] List all athletes");
+            System.out.println("[2] List all activities");
+            System.out.println("[3] List all activities by athlete");
+            System.out.println("[4] List all activities by mode");
+            System.out.println("[0] Back");
+            
+            int value = scan.nextInt();
+            if(value == 1){
+            System.out.println("Boys");
+            }
+        }
+        return choose;
     }
     
     
