@@ -70,5 +70,22 @@ public class Strava
         idAthletes++;    
         return idAthletes;    
     }
+    
+    public void mainMenu(){
+        System.out.println("-------------------------------------------");  
+        System.out.println("                   MENU");   
+        System.out.println("-------------------------------------------");
+        System.out.println("Choose among these options what to execute:"); System.out.println("");
+        System.out.println("[a] New athlete");
+        System.out.println("[b] New Equipment");
+        System.out.println("[c] Access to your account");
+        System.out.println("[d] Get details ");
+        System.out.println("[e] Quit");
+        
+    }
+    
+    public void newAthleteStrava(){
+        
+    }
 
 }

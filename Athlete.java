@@ -17,7 +17,7 @@ public class Athlete
     private int yearOfBirth; 
     private Strava strava;
     
-    public Athlete(Strava strava,String name, Gender gender, double weight,double height, int yearOfBirth) {
+    public Athlete(String name, Gender gender, double weight,double height, int yearOfBirth) {
         this.strava = strava;
         this.name = name;
         this.gender = gender;
@@ -27,7 +27,6 @@ public class Athlete
         this.activities = new ArrayList<>();
         this.id=strava.giveId();
         
-        //strava.addAthletes(this);
     }
     
     public Athlete(Strava strava){
