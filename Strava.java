@@ -87,5 +87,20 @@ public class Strava
     public void newAthleteStrava(){
         
     }
+    
+    public void getDetailsMenu(){
+        System.out.println("-------------------------------------------");  
+        System.out.println("                   MENU");   
+        System.out.println("-------------------------------------------");
+        System.out.println("Choose among these options what to execute:"); System.out.println("");  
+        System.out.println("[1] List all athletes");
+        System.out.println("[2] List all activities");
+        System.out.println("[3] List all activities by athlete");
+        System.out.println("[4] List all activities by mode");
+        System.out.println("[0] Back");
+        
+    }
+    
+    
 
 }
