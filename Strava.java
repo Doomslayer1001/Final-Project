@@ -99,23 +99,22 @@ public class Strava
                 System.out.println("Thank you for using our service.");
                 break;
             }
+            else{
+                 System.out.println("Invalid input");
+                 mainMenu();
+            }
             scan.close();
             
         }
     }
     public void newAthleteStrava(){
        Scanner scanner = new Scanner(System.in);
-       System.out.println("Enter athlete's name:");
-       String name = scanner.nextLine();
+    System.out.println("Enter athlete's name:");
+    String name = scanner.nextLine();
        
-       System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
-       
-       
-       
-       
- 
-      String genderInput = scanner.nextLine().toUpperCase();
-      Gender gender = Gender.valueOf(genderInput);
+    System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
+    String genderInput = scanner.nextLine().toUpperCase();
+    Gender gender = Gender.valueOf(genderInput);
 
     System.out.print("Enter athlete's weight (kg): ");
     double weight = scanner.nextDouble();
