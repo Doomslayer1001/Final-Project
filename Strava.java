@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Strava
 {
-    private HashMap<Integer,String> athletes;
+    private HashMap<Integer,Athlete> athletes;
     private int idAthletes=0;
     private Athlete athlete;
     public Strava()
@@ -131,6 +131,11 @@ public class Strava
 
     Athlete newAthlete = new Athlete(name, gender, weight, height, yearOfBirth, password);
     System.out.println("You just added an athlete " + newAthlete);
+    
+     int newId = giveId();
+    athletes.put(newId, newAthlete);
+    System.out.println("Athlete added with ID: " + newId);
+    
     }
 
     
