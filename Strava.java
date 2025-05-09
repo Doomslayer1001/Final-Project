@@ -110,8 +110,30 @@ public class Strava
        
        System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
        
-      
+       
+       
+       
+ 
+      String genderInput = scanner.nextLine().toUpperCase();
+      Gender gender = Gender.valueOf(genderInput);
+
+    System.out.print("Enter athlete's weight (kg): ");
+    double weight = scanner.nextDouble();
+
+    System.out.print("Enter athlete's height (cm): ");
+    double height = scanner.nextDouble();
+
+    System.out.print("Enter athlete's year of birth: ");
+    int yearOfBirth = scanner.nextInt();
+    scanner.nextLine(); 
+
+    System.out.print("Set a password for the athlete: ");
+    String password = scanner.nextLine();
+
+    Athlete newAthlete = new Athlete(name, gender, weight, height, yearOfBirth, password);
+    System.out.println("You just added an athlete " + newAthlete);
     }
+
     
     public void getDetailsMenu(){
         String choose = null;
