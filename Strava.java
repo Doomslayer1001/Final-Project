@@ -26,7 +26,7 @@ public class Strava
         mainMenu();
     }
     
-    public void listAllAthletes()
+    private void listAllAthletes()
     {
         System.out.println("Found athletes are: "); 
         // display all athletes
@@ -75,15 +75,12 @@ public class Strava
         }
     }
 
-    public int giveId(){
+    private int giveId(){
         idAthletes++;    
         return idAthletes;    
     }
 
-        public void mainMenu(){
-
-        
-
+    private void mainMenu(){
          System.out.println("-------------------------------------------");  
          System.out.println("                   MENU");   
          System.out.println("-------------------------------------------");
@@ -116,7 +113,7 @@ public class Strava
 
     }
     
-    public void newAthleteStrava(){
+    private void newAthleteStrava(){
 
        System.out.println("Enter athlete's name:");
        String name = scan.nextLine();
@@ -151,11 +148,11 @@ public class Strava
     }
 
 
-    public void newEquipmentStrava(){
+    private void newEquipmentStrava(){
         
     }
     
-    public void logIn(){
+    private void logIn(){
     System.out.println("-------------------------------------------");
     boolean loggedIn = false;
 
@@ -181,7 +178,7 @@ public class Strava
     }
     }
     
-    public void myAccount(Athlete athlete){
+    private void myAccount(Athlete athlete){
         boolean done=false;
         while (!done){
         System.out.println("-------------------------------------------");  
@@ -215,7 +212,7 @@ public class Strava
         mainMenu();
     }  
 
-    public void getDetailsMenu(){
+    private void getDetailsMenu(){
         String choose = null;
         
         while (choose == null){
@@ -231,7 +228,7 @@ public class Strava
             
             int value = scan.nextInt();
             if(value == 1){
-                System.out.println("Boys");
+              listAllAthletes();
             }
             else if(value == 2){
                 System.out.println("Boys");
@@ -254,8 +251,8 @@ public class Strava
 
     }
     
-    public void clearTerminal(){
-                System.out.print('\u000c');
+    private void clearTerminal(){
+        System.out.print('\u000c');
 
     }
 
