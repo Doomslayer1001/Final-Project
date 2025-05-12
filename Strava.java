@@ -11,7 +11,7 @@ public class Strava
 {
     private HashMap<Integer,Athlete> athletes;
     private HashMap<Athlete,String> accounts;
-    private ArrayList<String> equipment;
+    private ArrayList<Equipment> equipment;
 
     private int idAthletes=0;
     private Athlete athlete;
@@ -23,6 +23,7 @@ public class Strava
     }
 
     public void startStrava(){
+        clearTerminal();
         mainMenu();
     }
     
@@ -40,39 +41,7 @@ public class Strava
         Equipment bike = new Equipment("Bike", 1.5);
         Equipment skate = new Equipment("Skate",4.5);
         Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
-        
-        
-        Equipment chosen = null;
-        while(chosen == null){
-            System.out.println("Choose an equipment");
-            System.out.println("1. Bike");
-            System.out.println("2. Skate");
-            System.out.println("3. Poll");
-            System.out.println("please choose an equipment");
-            int value = scan.nextInt();
-            scan.nextLine();
-            if (value == 1 ){
-                chosen = bike;
-                System.out.println(bike);
-                mainMenu();
-                scan.close();
-            }
-            else if( value == 2){
-                chosen = skate;
-                System.out.println(skate);
-                mainMenu();
-                scan.close();
-            }
-            else if (value == 3){
-                chosen = poll;
-                System.out.println(poll);
-                mainMenu();
-                scan.close();
-            }
-            else{
-                System.out.println("Invalid option try again");
-            }
-        }
+        mainMenu();
     }
 
     private int giveId(){
@@ -96,13 +65,13 @@ public class Strava
                 clearTerminal();
                 newAthleteStrava();
             } else if (menu == 2) {
+                clearTerminal();
                 Choice();
             } else if (menu == 3) {
+                clearTerminal();
                 logIn();
-
-                
-
             } else if (menu == 4) {
+                clearTerminal();
                 getDetailsMenu();
             } else if (menu == 5) {
                 System.out.println("Thank you for using our service.");
@@ -134,6 +103,7 @@ public class Strava
 
        System.out.print("Set a password for the athlete: ");
        String password = scan.nextLine();
+       clearTerminal();
 
        Athlete newAthlete = new Athlete(name, gender, weight, height, yearOfBirth);
        System.out.println("You just added an athlete " + newAthlete);
@@ -161,7 +131,7 @@ public class Strava
         String username = scan.next(); 
         System.out.print("Password: ");
         String password = scan.next(); 
-
+        clearTerminal();
 
         for (Athlete athlete : accounts.keySet()) {
             if (athlete.toString().trim().equals(username) && accounts.get(athlete).equals(password)) {
@@ -193,15 +163,19 @@ public class Strava
         int menu = scan.nextInt();
             scan.nextLine();
             if (menu == 1){
-                athlete.addActivity();                
+                clearTerminal();
+                athlete.addActivity(this);                
             } else if (menu == 2) {
+                clearTerminal();
                 athlete.displayAllMyActivities();
             } else if (menu == 3) {
-                athlete.getTotalDistance();
-                
+                clearTerminal();
+                athlete.getTotalDistance();                
             } else if (menu == 4) {
+                clearTerminal();
                 athlete.getTotalCaloriesBurned();
             } else if (menu == 5) {
+               clearTerminal(); 
                athlete.getAthleteInfo();
             } else if (menu == 0) {
                 done=true;   
@@ -228,6 +202,7 @@ public class Strava
             
             int value = scan.nextInt();
             if(value == 1){
+              clearTerminal();  
               listAllAthletes();
             }
             else if(value == 2){
@@ -254,6 +229,10 @@ public class Strava
     private void clearTerminal(){
         System.out.print('\u000c');
 
+    }
+    
+    public ArrayList<Equipment> getEquipment() {
+        return equipment;
     }
 
 }
