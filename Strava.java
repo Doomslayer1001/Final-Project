@@ -9,6 +9,9 @@ import java.util.Scanner;
 public class Strava
 {
     private HashMap<Integer,Athlete> athletes;
+
+    private HashMap<Athlete,String> accounts;
+
     private int idAthletes=0;
     private Athlete athlete;
     private Scanner scan =new Scanner(System.in);
@@ -17,9 +20,9 @@ public class Strava
         athletes = new HashMap<>();
     }
     
-    public void addAthletes(){
+
+    public void startStrava(){
         mainMenu();
-        //athletes.put(athlete.getId(),athlete.getName());   
     }
     
     public void listAllAthletes()
@@ -31,7 +34,8 @@ public class Strava
         }
     }
     
-       private void Choice()
+
+    private void Choice()
     {
         Equipment bike = new Equipment("Bike", 1.5);
         Equipment skate = new Equipment("Skate",4.5);
@@ -74,7 +78,7 @@ public class Strava
         idAthletes++;    
         return idAthletes;    
     }
-    
+
         public void mainMenu(){
         while (true){
          System.out.println("-------------------------------------------");  
@@ -111,19 +115,25 @@ public class Strava
             else{
                  System.out.println("Invalid input");
                  mainMenu();
+
         }
         }
         
     }
+    
     public void newAthleteStrava(){
-       Scanner scanner = new Scanner(System.in);
+
+        
+        Scanner scanner = new Scanner(System.in);
+
        System.out.println("Enter athlete's name:");
        String name = scanner.nextLine();
        
        System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
        String genderInput = scanner.nextLine().toUpperCase();
        Gender gender = Gender.valueOf(genderInput);
-    
+
+
        System.out.print("Enter athlete's weight (kg): ");
        double weight = scanner.nextDouble();
     
@@ -137,16 +147,60 @@ public class Strava
        System.out.print("Set a password for the athlete: ");
        String password = scanner.nextLine();
 
-       Athlete newAthlete = new Athlete(name, gender, weight, height, yearOfBirth, password);
+       Athlete newAthlete = (new Athlete(name, gender, weight, height, yearOfBirth));
        System.out.println("You just added an athlete " + newAthlete);
+
+        
+         int newId = giveId();
+        athletes.put(newId, newAthlete);
+        accounts.put(athlete, password);
+        System.out.println("Athlete added with ID: " + newId);
     
-       int newId = giveId();
-       athletes.put(newId, newAthlete);
-       System.out.println("Athlete added with ID: " + newId);
-    
+
     }
 
+    public void newEquipmentStrava(){
+
+            
+    } 
+
+    public void logIn(){
+        Scanner logInScanner =new Scanner(System.in);
+        System.out.println("-------------------------------------------"); 
+        System.out.print("Username: "); 
+        String username = logInScanner.next(); 
+        System.out.print("Password: "); 
+        String password = logInScanner.next();
+      
+        while (username != null && password!= null){
+            boolean loggedIn = false;
+                for (Athlete athlete : accounts.keySet()) {
+                if (athlete.toString().equals(username) && accounts.get(athlete).equals(password)) {
+                    System.out.println("Login successful! Welcome " + athlete.getName());
+                    loggedIn = true;
+                    myAccount(athlete);
+                    break;
+                }
+            }
     
+            if (loggedIn==false) {
+                System.out.println("Invalid username or password. Please try again.");
+            }  
+        }
+    }
+    
+    public void myAccount(Athlete athlete){
+        System.out.println("-------------------------------------------");  
+        System.out.println("                 MY ACCOUNT");   
+        System.out.println("-------------------------------------------"); 
+        System.out.println("[1] New activity");
+        System.out.println("[2] List all my activities");
+        System.out.println("[3] Calculate my total distance");
+        System.out.println("[4] Calculate my burned calories");
+        System.out.println("[5] My profile");
+        System.out.println("[0] Close my session");
+    }  
+
     public void getDetailsMenu(){
         String choose = null;
         
@@ -174,6 +228,7 @@ public class Strava
             }
             
         }
+
     }
     
     
