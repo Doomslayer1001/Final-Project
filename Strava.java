@@ -19,7 +19,6 @@ public class Strava
     {
         athletes = new HashMap<>();
     }
-    
 
     public void startStrava(){
         mainMenu();
@@ -33,7 +32,6 @@ public class Strava
             System.out.println("Id: " +id + " Name: "+ athletes.get(id));
         }
     }
-    
 
     private void Choice()
     {
