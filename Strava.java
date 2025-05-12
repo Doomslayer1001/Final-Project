@@ -88,21 +88,61 @@ public class Strava
        System.out.println("Enter athlete's name:");
        String name = scan.nextLine();
        
+       
+       
+       
+       Gender gender = null;
+       while(gender == null){
+       
        System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
        String genderInput = scan.nextLine().toUpperCase();
-       Gender gender = Gender.valueOf(genderInput);
+       try{
+       
+       
+       gender = Gender.valueOf(genderInput);
+       
+    } catch ( IllegalArgumentException e){
+        System.out.println("Invalid gender.Please enter MALE,FEMALE, or OTHER.");
+    }
+} 
+       
+       
+       double weight = -1;
+       while( weight <= 0){
 
        System.out.print("Enter athlete's weight (kg): ");
-       double weight = scan.nextDouble();
+       weight = scan.nextDouble();
+       
+       if (weight <= 0){
+           System.out.println("Weight must be a positive number. Please try again.");
+       }
+    }
     
+       double height = -1;
+       while( height <= 0){
        System.out.print("Enter athlete's height (cm): ");
-       double height = scan.nextDouble();
+        height = scan.nextDouble();
+        
+    
+        if (weight <= 0){
+            System.out.println("Height must be a positive number. Please try again.");
+        }
+        
+        
+    }
 
-       System.out.print("Enter athlete's year of birth: ");
-       int yearOfBirth = scan.nextInt();
-       scan.nextLine();
-
-       System.out.print("Set a password for the athlete: ");
+      int yearOfBirth = -1;
+    int currentYear = 2025;
+    while (yearOfBirth < 1900 || yearOfBirth > currentYear) {
+        System.out.print("Enter athlete's year of birth: ");
+        yearOfBirth = scan.nextInt();
+        if (yearOfBirth < 1900 || yearOfBirth > currentYear) {
+            System.out.println("Year of birth must be between 1900 and " + currentYear + ". Please try again.");
+        }
+    }       
+   scan.nextLine();
+    
+    System.out.print("Set a password for the athlete: ");
        String password = scan.nextLine();
        clearTerminal();
 
