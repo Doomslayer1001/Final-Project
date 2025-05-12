@@ -20,6 +20,15 @@ public class Strava
     {
         athletes = new HashMap<>();
         accounts = new HashMap<>();
+        equipment = new ArrayList<>();
+        
+        Equipment bike = new Equipment("Bike", 1.5);
+        equipment.add(bike);
+        Equipment skate = new Equipment("Skate",4.5);  //equipment by default
+        equipment.add(skate);
+        Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
+        equipment.add(poll);
+             
     }
 
     public void startStrava(){
@@ -34,14 +43,6 @@ public class Strava
         for (Integer id: athletes.keySet()){
             System.out.println("Id: " +id + " Name: "+ athletes.get(id));
         }
-    }
-
-    private void Choice()
-    {
-        Equipment bike = new Equipment("Bike", 1.5);
-        Equipment skate = new Equipment("Skate",4.5);
-        Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
-        mainMenu();
     }
 
     private int giveId(){
@@ -66,7 +67,7 @@ public class Strava
                 newAthleteStrava();
             } else if (menu == 2) {
                 clearTerminal();
-                Choice();
+                newEquipmentStrava();
             } else if (menu == 3) {
                 clearTerminal();
                 logIn();
@@ -119,7 +120,18 @@ public class Strava
 
 
     private void newEquipmentStrava(){
+        System.out.println("Enter the name of the equipment you would like to use");
+        String name = scan.nextLine();
         
+        System.out.println("Enter the equipment's weight");
+        double weight = scan.nextDouble();
+        
+        Equipment newEquip = new Equipment(name,weight);
+        equipment.add(newEquip);
+        
+        System.out.println("new equipement added: " + newEquip );
+        mainMenu();
+        clearTerminal();
     }
     
     private void logIn(){
@@ -184,6 +196,7 @@ public class Strava
                 }
         }
         mainMenu();
+        clearTerminal();
     }  
 
     private void getDetailsMenu(){
@@ -198,6 +211,7 @@ public class Strava
             System.out.println("[2] List all activities");
             System.out.println("[3] List all activities by athlete");
             System.out.println("[4] List all activities by mode");
+            System.out.println("[5] List all equipment");
             System.out.println("[0] Back");
             
             int value = scan.nextInt();
@@ -212,18 +226,22 @@ public class Strava
                 System.out.println("Boys");
             }
             else if(value == 4){
-                System.out.println("Boys");
+               System.out.println("Boys");
             }
+            
             else if(value == 0){
                 mainMenu();
+                clearTerminal();
                 break;
+            }
+            else if(value ==5){
+                clearTerminal();
+                ListEquipment();
             }
             else{
                 System.out.println("Invalid input");
             }
-            
         }
-
     }
     
     private void addActivity(Athlete athlete){
@@ -262,6 +280,7 @@ public class Strava
                     
                     PowActivity powActivity = new PowActivity(distance, description, modality, duration);
                     powActivity.chooseEquipment(selectedEquipment);
+                    athlete.getActivities().add(powActivity);
                     System.out.println("New Powered Activity created with equipment: " + selectedEquipment.getDescription());
                 } else {
                     System.out.println("Invalid equipment choice! Creating a regular activity instead...");
@@ -276,6 +295,18 @@ public class Strava
             }
     }
     
+    private void ListEquipment(){
+       System.out.println("List of all equipment"); 
+       if(equipment.isEmpty()){
+         System.out.println("no available equiment");
+       }
+       else{
+           for(Equipment eq : equipment){
+               System.out.println(eq);
+           }
+       }
+    }
+
     private void clearTerminal(){
         System.out.print('\u000c');
 

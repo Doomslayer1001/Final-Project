@@ -17,7 +17,7 @@ public class PowActivity extends Activity
     
     public void chooseEquipment(Equipment equipment){
         this.equipment = equipment;
-        System.out.println("you choose a PowerActivity");
+        System.out.println("you chose a PoweredActivity");
     }
     
     public Equipment getEquipment(){
