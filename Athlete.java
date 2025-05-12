@@ -36,7 +36,8 @@ public class Athlete
      }
     
     public void addActivity(){
-    //Activity activity = new Activity(); 
+        
+   // Activity activity = new Activity(); 
     }
     
     public void displayAllMyActivities(){
@@ -62,7 +63,7 @@ public class Athlete
         return totalCalories;
     }
     
-    public void athleteInfo()
+    public void getAthleteInfo()
     {
         System.out.println("Name: "+ this.name);
         System.out.println("Gender: "+ this.gender.toString());
