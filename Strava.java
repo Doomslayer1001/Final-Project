@@ -81,7 +81,9 @@ public class Strava
     }
 
         public void mainMenu(){
+
         
+
          System.out.println("-------------------------------------------");  
          System.out.println("                   MENU");   
          System.out.println("-------------------------------------------");
@@ -94,18 +96,24 @@ public class Strava
          int menu = scan.nextInt();
             scan.nextLine();
         if (menu == 1){
+                clearTerminal();
                 newAthleteStrava();
             } else if (menu == 2) {
                 Choice();
             } else if (menu == 3) {
                 logIn();
+
+                
+
             } else if (menu == 4) {
                 getDetailsMenu();
             } else if (menu == 5) {
                 System.out.println("Thank you for using our service.");
+
             } else {
                 System.out.println("Invalid input");
             }
+
     }
     
     public void newAthleteStrava(){
@@ -174,6 +182,8 @@ public class Strava
     }
     
     public void myAccount(Athlete athlete){
+        boolean done=false;
+        while (!done){
         System.out.println("-------------------------------------------");  
         System.out.println("                 MY ACCOUNT");   
         System.out.println("-------------------------------------------"); 
@@ -183,6 +193,26 @@ public class Strava
         System.out.println("[4] Calculate my burned calories");
         System.out.println("[5] My profile");
         System.out.println("[0] Close my session");
+        int menu = scan.nextInt();
+            scan.nextLine();
+            if (menu == 1){
+                athlete.addActivity();                
+            } else if (menu == 2) {
+                athlete.displayAllMyActivities();
+            } else if (menu == 3) {
+                athlete.getTotalDistance();
+                
+            } else if (menu == 4) {
+                athlete.getTotalCaloriesBurned();
+            } else if (menu == 5) {
+               athlete.getAthleteInfo();
+            } else if (menu == 0) {
+                done=true;   
+            } else {
+                System.out.println("Invalid input");
+            }
+        }
+        mainMenu();
     }  
 
     public void getDetailsMenu(){
@@ -215,6 +245,9 @@ public class Strava
 
     }
     
-    
+    public void clearTerminal(){
+                System.out.print('\u000c');
+
+    }
 
 }
