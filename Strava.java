@@ -233,6 +233,15 @@ public class Strava
             if(value == 1){
                 System.out.println("Boys");
             }
+            else if(value == 2){
+                System.out.println("Boys");
+            }
+            else if(value == 3){
+                System.out.println("Boys");
+            }
+            else if(value == 4){
+                System.out.println("Boys");
+            }
             else if(value == 0){
                 mainMenu();
                 break;
