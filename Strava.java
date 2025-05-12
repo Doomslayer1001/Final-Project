@@ -263,7 +263,7 @@ public class Strava
                 allActivity();
             }
             else if(value == 3){
-                System.out.println("Boys");
+                listActivityAthlete();
             }
             else if(value == 4){
                System.out.println("Boys");
@@ -349,12 +349,25 @@ public class Strava
            }
        }
     }
+    
     private void allActivity(){
         System.out.println("List of all activity");
         for(Athlete athlete : athletes.values()){
             System.out.println("Athlete: " + athlete.getName());
             athlete.displayAllMyActivities(); 
             System.out.println();
+        }
+    }
+    private void listActivityAthlete(){
+        System.out.println("Enter athlete name: ");
+        String name = scan.nextLine().trim();
+        for(Athlete athlete : athletes.values()){
+            if(athlete.getName().equalsIgnoreCase(name)){
+                System.out.println("Activity for: " + name);
+                athlete.displayAllMyActivities(); 
+                return;
+            }
+            System.out.println("Athlete not found.");
         }
     }
     private void clearTerminal(){
