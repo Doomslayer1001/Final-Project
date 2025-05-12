@@ -76,7 +76,6 @@ public class Strava
     }
     
         public void mainMenu(){
-        
         while (true){
          System.out.println("-------------------------------------------");  
          System.out.println("                   MENU");   
@@ -168,7 +167,7 @@ public class Strava
             }
             else if(value == 0){
                 mainMenu();
-                scan.close();
+                break;
             }
             else{
                 System.out.println("Invalid input");
