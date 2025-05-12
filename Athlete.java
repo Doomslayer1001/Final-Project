@@ -70,4 +70,9 @@ public class Athlete
         System.out.println("Year of birth: "+ yearOfBirth);
         System.out.println("My activities: "+activities);
     }
+    
+        @Override
+    public String toString() {
+        return this.name;  // Return the athlete's name for the comparison
+    }
 }

@@ -18,6 +18,7 @@ public class Strava
     public Strava()
     {
         athletes = new HashMap<>();
+        accounts = new HashMap<>();
     }
     
 
@@ -50,6 +51,7 @@ public class Strava
             System.out.println("3. Poll");
             System.out.println("please choose an equipment");
             int value = scan.nextInt();
+            scan.nextLine();
             if (value == 1 ){
                 chosen = bike;
                 System.out.println(bike);
@@ -79,86 +81,76 @@ public class Strava
         return idAthletes;    
     }
 
-        public void mainMenu(){
-        
-        while (true){
-         System.out.println("-------------------------------------------");  
-         System.out.println("                   MENU");   
-         System.out.println("-------------------------------------------");
-         System.out.println("Choose among these options what to execute:"); System.out.println("");
-         System.out.println("[1] New athlete");
-         System.out.println("[2] New Equipment");
-         System.out.println("[3] Access to your account");
-         System.out.println("[4] Get details ");
-         System.out.println("[5] Quit");
-         int menu = scan.nextInt();
-         String choose = null;
-        
-        if (menu == 1){
+    public void mainMenu(){
+       boolean loggedIn = false;
+
+        while (loggedIn==false) {
+            System.out.println("-------------------------------------------");
+            System.out.println("                   MENU");
+            System.out.println("-------------------------------------------");
+            System.out.println("Choose among these options what to execute:");
+            System.out.println("");
+            System.out.println("[1] New athlete");
+            System.out.println("[2] New Equipment");
+            System.out.println("[3] Access to your account");
+            System.out.println("[4] Get details ");
+            System.out.println("[5] Quit");
+    
+            int menu = scan.nextInt();
+            scan.nextLine();
+    
+            if (menu == 1) {
                 newAthleteStrava();
-                break;
-            }
-            else if (menu == 2){
+            } else if (menu == 2) {
                 Choice();
-                break;
-            }
-            else if (menu == 3){
-                System.out.println("hello");
-            }
-            else if (menu == 4){
+            } else if (menu == 3) {
+                logIn();
+                loggedIn = true;
+            } else if (menu == 4) {
                 getDetailsMenu();
-                break;
-                    }
-            else if (menu == 5){
+            } else if (menu == 5) {
                 System.out.println("Thank you for using our service.");
                 break;
+            } else {
+                System.out.println("Invalid input");
             }
-            else{
-                 System.out.println("Invalid input");
-                 mainMenu();
-
         }
-        }
-        
     }
     
     public void newAthleteStrava(){
 
-        
-        Scanner scanner = new Scanner(System.in);
-
        System.out.println("Enter athlete's name:");
-       String name = scanner.nextLine();
+       String name = scan.nextLine();
        
        System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
-       String genderInput = scanner.nextLine().toUpperCase();
+       String genderInput = scan.nextLine().toUpperCase();
        Gender gender = Gender.valueOf(genderInput);
 
-
        System.out.print("Enter athlete's weight (kg): ");
-       double weight = scanner.nextDouble();
+       double weight = scan.nextDouble();
     
        System.out.print("Enter athlete's height (cm): ");
-       double height = scanner.nextDouble();
+       double height = scan.nextDouble();
 
        System.out.print("Enter athlete's year of birth: ");
-       int yearOfBirth = scanner.nextInt();
-       scanner.nextLine(); 
+       int yearOfBirth = scan.nextInt();
+       scan.nextLine();
 
        System.out.print("Set a password for the athlete: ");
-       String password = scanner.nextLine();
+       String password = scan.nextLine();
 
-       Athlete newAthlete = (new Athlete(name, gender, weight, height, yearOfBirth));
+       Athlete newAthlete = new Athlete(name, gender, weight, height, yearOfBirth);
        System.out.println("You just added an athlete " + newAthlete);
 
         
          int newId = giveId();
         athletes.put(newId, newAthlete);
-        accounts.put(athlete, password);
+        accounts.put(newAthlete, password);
         System.out.println("Athlete added with ID: " + newId);
-    
+        mainMenu();
 
     }
+
 
     public void newEquipmentStrava(){
 
@@ -166,28 +158,29 @@ public class Strava
     } 
 
     public void logIn(){
-        Scanner logInScanner =new Scanner(System.in);
-        System.out.println("-------------------------------------------"); 
-        System.out.print("Username: "); 
-        String username = logInScanner.next(); 
-        System.out.print("Password: "); 
-        String password = logInScanner.next();
-      
-        while (username != null && password!= null){
-            boolean loggedIn = false;
-                for (Athlete athlete : accounts.keySet()) {
-                if (athlete.toString().equals(username) && accounts.get(athlete).equals(password)) {
-                    System.out.println("Login successful! Welcome " + athlete.getName());
-                    loggedIn = true;
-                    myAccount(athlete);
-                    break;
-                }
+    System.out.println("-------------------------------------------");
+    boolean loggedIn = false;
+
+    while (loggedIn==false) {
+        System.out.print("Username: ");
+        String username = scan.next(); 
+        System.out.print("Password: ");
+        String password = scan.next(); 
+
+
+        for (Athlete athlete : accounts.keySet()) {
+            if (athlete.toString().trim().equals(username) && accounts.get(athlete).equals(password)) {
+                System.out.println("Login successful! Welcome " + athlete.getName());
+                loggedIn = true; 
+                myAccount(athlete); 
+                break; 
             }
-    
-            if (loggedIn==false) {
-                System.out.println("Invalid username or password. Please try again.");
-            }  
         }
+
+        if (loggedIn==false) {
+            System.out.println("Invalid username or password. Please try again.");
+        }
+    }
     }
     
     public void myAccount(Athlete athlete){
