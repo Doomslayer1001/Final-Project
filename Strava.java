@@ -20,7 +20,6 @@ public class Strava
         athletes = new HashMap<>();
         accounts = new HashMap<>();
     }
-    
 
     public void startStrava(){
         mainMenu();
@@ -34,7 +33,6 @@ public class Strava
             System.out.println("Id: " +id + " Name: "+ athletes.get(id));
         }
     }
-    
 
     private void Choice()
     {
@@ -81,31 +79,27 @@ public class Strava
         return idAthletes;    
     }
 
-    public void mainMenu(){
-       boolean loggedIn = false;
-
-        while (loggedIn==false) {
-            System.out.println("-------------------------------------------");
-            System.out.println("                   MENU");
-            System.out.println("-------------------------------------------");
-            System.out.println("Choose among these options what to execute:");
-            System.out.println("");
-            System.out.println("[1] New athlete");
-            System.out.println("[2] New Equipment");
-            System.out.println("[3] Access to your account");
-            System.out.println("[4] Get details ");
-            System.out.println("[5] Quit");
-    
-            int menu = scan.nextInt();
+        public void mainMenu(){
+        while (true){
+         System.out.println("-------------------------------------------");  
+         System.out.println("                   MENU");   
+         System.out.println("-------------------------------------------");
+         System.out.println("Choose among these options what to execute:"); System.out.println("");
+         System.out.println("[1] New athlete");
+         System.out.println("[2] New Equipment");
+         System.out.println("[3] Access to your account");
+         System.out.println("[4] Get details ");
+         System.out.println("[5] Quit");
+         int menu = scan.nextInt();
             scan.nextLine();
-    
-            if (menu == 1) {
+        if (menu == 1){
                 newAthleteStrava();
+                
             } else if (menu == 2) {
                 Choice();
             } else if (menu == 3) {
                 logIn();
-                loggedIn = true;
+                break;
             } else if (menu == 4) {
                 getDetailsMenu();
             } else if (menu == 5) {
@@ -215,7 +209,7 @@ public class Strava
             }
             else if(value == 0){
                 mainMenu();
-                scan.close();
+                break;
             }
             else{
                 System.out.println("Invalid input");

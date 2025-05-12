@@ -8,16 +8,19 @@ import java.util.Scanner;
  */
 public class PowActivity extends Activity
 {
-
+    private Equipment equipment;
+    
     public PowActivity(double distance, String description, Modality modality, 
                            double duration) {
         super(distance, description, modality, duration);
-        
     }
     
-    public void chooseEquipment(){
-
-        
-
+    public void chooseEquipment(Equipment equipment){
+        this.equipment = equipment;
+        System.out.println("you choose a PowerActivity");
+    }
+    
+    public Equipment getEquipment(){
+        return equipment;
     }
 }
