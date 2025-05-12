@@ -97,14 +97,14 @@ public class Strava
        System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
        String genderInput = scan.nextLine().toUpperCase();
        try{
-       
+         
        
        gender = Gender.valueOf(genderInput);
        
     } catch ( IllegalArgumentException e){
         System.out.println("Invalid gender.Please enter MALE,FEMALE, or OTHER.");
     }
-} 
+    } 
        
        
        double weight = -1;
@@ -116,7 +116,7 @@ public class Strava
        if (weight <= 0){
            System.out.println("Weight must be a positive number. Please try again.");
        }
-    }
+     }
     
        double height = -1;
        while( height <= 0){
@@ -129,7 +129,7 @@ public class Strava
         }
         
         
-    }
+     }
 
       int yearOfBirth = -1;
     int currentYear = 2025;
@@ -139,8 +139,8 @@ public class Strava
         if (yearOfBirth < 1900 || yearOfBirth > currentYear) {
             System.out.println("Year of birth must be between 1900 and " + currentYear + ". Please try again.");
         }
-    }       
-   scan.nextLine();
+     }       
+    scan.nextLine();
     
     System.out.print("Set a password for the athlete: ");
        String password = scan.nextLine();
@@ -174,11 +174,11 @@ public class Strava
         clearTerminal();
     }
     
-    private void logIn(){
+   private void logIn() {
     System.out.println("-------------------------------------------");
     boolean loggedIn = false;
 
-    while (loggedIn==false) {
+    while (!loggedIn) {
         System.out.print("Username: ");
         String username = scan.next(); 
         System.out.print("Password: ");
@@ -190,16 +190,36 @@ public class Strava
                 System.out.println("Login successful! Welcome " + athlete.getName());
                 loggedIn = true; 
                 myAccount(athlete); 
-                break; 
+                return; 
             }
         }
 
-        if (loggedIn==false) {
-            System.out.println("Invalid username or password. Please try again.");
+        
+        System.out.println("Invalid username or password.");
+        
+        
+        boolean validChoice = false;
+        while (!validChoice) {
+            System.out.println("Would you like to try again or return to the main menu?");
+            System.out.println("[1] Try again");
+            System.out.println("[2] Return to main menu");
+            System.out.print("Enter your choice between 1 or 2: ");
+            int choice = scan.nextInt();
+            scan.nextLine(); 
+
+            if (choice == 1) {
+                validChoice = true; 
+            } else if (choice == 2) {
+                clearTerminal();
+                mainMenu(); 
+                return; 
+            } else {
+                System.out.println("This not a valid choice. Please enter 1 or 2."); 
+            }
         }
     }
-    }
-    
+}
+
     private void myAccount(Athlete athlete){
         boolean done=false;
         while (!done){
