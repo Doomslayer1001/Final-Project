@@ -151,37 +151,37 @@ public class Strava
     private void myAccount(Athlete athlete){
         boolean done=false;
         while (!done){
-        System.out.println("-------------------------------------------");  
-        System.out.println("                 MY ACCOUNT");   
-        System.out.println("-------------------------------------------"); 
-        System.out.println("[1] New activity");
-        System.out.println("[2] List all my activities");
-        System.out.println("[3] Calculate my total distance");
-        System.out.println("[4] Calculate my burned calories");
-        System.out.println("[5] My profile");
-        System.out.println("[0] Close my session");
-        int menu = scan.nextInt();
+            System.out.println("-------------------------------------------");  
+            System.out.println("                 MY ACCOUNT");   
+            System.out.println("-------------------------------------------"); 
+            System.out.println("[1] New activity");
+            System.out.println("[2] List all my activities");
+            System.out.println("[3] Calculate my total distance");
+            System.out.println("[4] Calculate my burned calories");
+            System.out.println("[5] My profile");
+            System.out.println("[0] Close my session");
+            int menu = scan.nextInt();
             scan.nextLine();
-            if (menu == 1){
-                clearTerminal();
-                athlete.addActivity(this);                
-            } else if (menu == 2) {
-                clearTerminal();
-                athlete.displayAllMyActivities();
-            } else if (menu == 3) {
-                clearTerminal();
-                athlete.getTotalDistance();                
-            } else if (menu == 4) {
-                clearTerminal();
-                athlete.getTotalCaloriesBurned();
-            } else if (menu == 5) {
-               clearTerminal(); 
-               athlete.getAthleteInfo();
-            } else if (menu == 0) {
-                done=true;   
-            } else {
-                System.out.println("Invalid input");
-            }
+                if (menu == 1){
+                    clearTerminal();
+                    addActivity(athlete);                
+                } else if (menu == 2) {
+                    clearTerminal();
+                    athlete.displayAllMyActivities();
+                } else if (menu == 3) {
+                    clearTerminal();
+                    athlete.getTotalDistance();                
+                } else if (menu == 4) {
+                    clearTerminal();
+                    athlete.getTotalCaloriesBurned();
+                } else if (menu == 5) {
+                   clearTerminal(); 
+                   athlete.getAthleteInfo();
+                } else if (menu == 0) {
+                    done=true;   
+                } else {
+                    System.out.println("Invalid input");
+                }
         }
         mainMenu();
     }  
@@ -226,13 +226,59 @@ public class Strava
 
     }
     
+    private void addActivity(Athlete athlete){
+
+        System.out.println("Enter the distance of the activity (in km): ");
+        double distance = scan.nextDouble();
+        scan.nextLine(); 
+    
+        System.out.println("Enter a description for the activity: ");
+        String description = scan.nextLine();
+    
+        System.out.println("Enter the modality (WALKING,RUNNING, CYCLING, SWIMMING): ");
+        String modalityInput = scan.nextLine().toUpperCase();
+        Modality modality = Modality.valueOf(modalityInput);
+    
+        System.out.println("Enter the duration of the activity (in minutes): ");
+        double duration = scan.nextDouble();
+        scan.nextLine(); 
+    
+        System.out.println("Are you using equipment for this activity? (yes/no): ");
+        String equipmentChoice = scan.nextLine().trim().toLowerCase();
+    
+            if (equipmentChoice.equals("yes")) {
+    
+                System.out.println("Select equipment from the following list:");
+                for (int i = 0; i < equipment.size(); i++) {
+                    System.out.println("[" + (i + 1) + "] " + equipment.get(i).getDescription());
+                }
+        
+                System.out.print("Enter the number of the equipment you want to use: ");
+                int number = scan.nextInt();
+                scan.nextLine();  
+        
+                if (number > 0 && number <= equipment.size()) {
+                    Equipment selectedEquipment = equipment.get(number - 1);
+                    
+                    PowActivity powActivity = new PowActivity(distance, description, modality, duration);
+                    powActivity.chooseEquipment(selectedEquipment);
+                    System.out.println("New Powered Activity created with equipment: " + selectedEquipment.getDescription());
+                } else {
+                    System.out.println("Invalid equipment choice! Creating a regular activity instead...");
+                    Activity activity = new Activity(distance, description, modality, duration);
+                    athlete.getActivities().add(activity);
+                    System.out.println("New regular Activity");
+                }
+            } else {
+                Activity activity = new Activity(distance, description, modality, duration);
+                athlete.getActivities().add(activity);
+                System.out.println("New regular Activity created");
+            }
+    }
+    
     private void clearTerminal(){
         System.out.print('\u000c');
 
-    }
-    
-    public ArrayList<Equipment> getEquipment() {
-        return equipment;
     }
 
 }
