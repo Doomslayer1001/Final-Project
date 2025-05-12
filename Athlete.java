@@ -38,10 +38,23 @@ public class Athlete
      }
     
     public void displayAllMyActivities(){
-        System.out.println("My activites are: ");
-        for (Activity a:activities){    
-          System.out.println(a);
+    System.out.println("My activities are: ");
+    for (Activity a : activities) {
+  
+        System.out.println(a.getDescription());
+        System.out.println(a.getDistance());
+        System.out.println(a.getDuration());
+        Modality modality = a.getModality();
+        System.out.println(modality.toString().toLowerCase());
+        
+        if (a instanceof PowActivity) { //check if a it is a powered activity
+            PowActivity poweredActivity = (PowActivity) a; //casting, where we assign subtype to supertype  
+            Equipment equipment = poweredActivity.getEquipment(); 
+            System.out.println("Equipment used: " + equipment.getDescription()); 
+            
         }
+        System.out.println();
+    }
     }
     
     public double getTotalDistance() {
@@ -71,7 +84,7 @@ public class Athlete
     
         @Override
     public String toString() {
-        return this.name;  // Return the athlete's name for the comparison
+        return this.name;  
     }
     
     public ArrayList<Activity> getActivities() {

@@ -281,16 +281,19 @@ public class Strava
                     PowActivity powActivity = new PowActivity(distance, description, modality, duration);
                     powActivity.chooseEquipment(selectedEquipment);
                     athlete.getActivities().add(powActivity);
+                    clearTerminal();
                     System.out.println("New Powered Activity created with equipment: " + selectedEquipment.getDescription());
                 } else {
                     System.out.println("Invalid equipment choice! Creating a regular activity instead...");
                     Activity activity = new Activity(distance, description, modality, duration);
                     athlete.getActivities().add(activity);
-                    System.out.println("New regular Activity");
+                    clearTerminal();
+                    System.out.println("New regular Activity created");
                 }
             } else {
                 Activity activity = new Activity(distance, description, modality, duration);
                 athlete.getActivities().add(activity);
+                clearTerminal();
                 System.out.println("New regular Activity created");
             }
     }
