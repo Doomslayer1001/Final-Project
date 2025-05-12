@@ -17,27 +17,23 @@ public class Athlete
     private int yearOfBirth; 
     
     public Athlete(String name, Gender gender, double weight,double height, int yearOfBirth) {
+        
         this.name = name;
         this.gender = gender;
         this.weight = weight;
         this.height = height;
         this.yearOfBirth = yearOfBirth;
         this.activities = new ArrayList<>();
-       // this.id=Strava.giveId();
-        
+
     }
     
     public String getName(){
      return this.name;
     }
     
-    public int getId(){
-     return this.id;
-    }
-    
     public double getWeight(){
         return this.weight;
-    }
+     }
     
     public void addActivity(){
     //Activity activity = new Activity(); 
