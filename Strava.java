@@ -14,6 +14,7 @@ public class Strava
 
     private int idAthletes=0;
     private Athlete athlete;
+    private Scanner scan =new Scanner(System.in);
     public Strava()
     {
         athletes = new HashMap<>();
@@ -40,7 +41,7 @@ public class Strava
         Equipment skate = new Equipment("Skate",4.5);
         Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
         
-        Scanner scan = new Scanner(System.in);
+        
         Equipment chosen = null;
         while(chosen == null){
             System.out.println("Choose an equipment");
@@ -52,18 +53,24 @@ public class Strava
             if (value == 1 ){
                 chosen = bike;
                 System.out.println(bike);
+                mainMenu();
+                scan.close();
             }
             else if( value == 2){
                 chosen = skate;
                 System.out.println(skate);
+                mainMenu();
+                scan.close();
             }
             else if (value == 3){
                 chosen = poll;
                 System.out.println(poll);
+                mainMenu();
+                scan.close();
             }
             else{
                 System.out.println("Invalid option try again");
-            }        
+            }
         }
     }
 
@@ -71,69 +78,79 @@ public class Strava
         idAthletes++;    
         return idAthletes;    
     }
-    
-    public void mainMenu(){
-        Scanner scan = new Scanner(System.in);
-        boolean running = true;  
 
-        while (running) {
-            // Display the menu options
-            System.out.println("-------------------------------------------");  
-            System.out.println("                   MENU");   
-            System.out.println("-------------------------------------------");
-            System.out.println("Choose among these options what to execute:"); 
-            System.out.println("");
-            System.out.println("[1] New athlete");
-            System.out.println("[2] New Equipment");
-            System.out.println("[3] Access to your account");
-            System.out.println("[4] Get details");
-            System.out.println("[5] Quit");
-            
-            int menu = scan.nextInt();
-            scan.nextLine(); 
-            if (menu == 1) {
+        public void mainMenu(){
+        
+        while (true){
+         System.out.println("-------------------------------------------");  
+         System.out.println("                   MENU");   
+         System.out.println("-------------------------------------------");
+         System.out.println("Choose among these options what to execute:"); System.out.println("");
+         System.out.println("[1] New athlete");
+         System.out.println("[2] New Equipment");
+         System.out.println("[3] Access to your account");
+         System.out.println("[4] Get details ");
+         System.out.println("[5] Quit");
+         int menu = scan.nextInt();
+         String choose = null;
+        
+        if (menu == 1){
                 newAthleteStrava();
-            } else if (menu == 2) {
-                Choice();
-            } else if (menu == 3) {
-                System.out.println("Accessing account..."); 
-            } else if (menu == 4) {
-                getDetailsMenu();
-            } else if (menu == 5) {
-                System.out.println("Thank you for using our service.");
-                scan.close(); 
-                running = false;
-            } else {
-                System.out.println("Invalid input, please try again.");
+                break;
             }
+            else if (menu == 2){
+                Choice();
+                break;
+            }
+            else if (menu == 3){
+                System.out.println("hello");
+            }
+            else if (menu == 4){
+                getDetailsMenu();
+                break;
+                    }
+            else if (menu == 5){
+                System.out.println("Thank you for using our service.");
+                break;
+            }
+            else{
+                 System.out.println("Invalid input");
+                 mainMenu();
+
         }
+        }
+        
     }
     
     public void newAthleteStrava(){
+
         
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter athlete's name:");
-        String name = scanner.nextLine();
-           
-        System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
-        String genderInput = scanner.nextLine().toUpperCase();
-        Gender gender = Gender.valueOf(genderInput);
+
+       System.out.println("Enter athlete's name:");
+       String name = scanner.nextLine();
+       
+       System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
+       String genderInput = scanner.nextLine().toUpperCase();
+       Gender gender = Gender.valueOf(genderInput);
+
+
+       System.out.print("Enter athlete's weight (kg): ");
+       double weight = scanner.nextDouble();
     
-        System.out.print("Enter athlete's weight (kg): ");
-        double weight = scanner.nextDouble();
-    
-        System.out.print("Enter athlete's height (cm): ");
-        double height = scanner.nextDouble();
-    
-        System.out.print("Enter athlete's year of birth: ");
-        int yearOfBirth = scanner.nextInt();
-        scanner.nextLine(); 
-    
-        System.out.print("Set a password for the athlete: ");
-        String password = scanner.nextLine();
-    
-        Athlete newAthlete = new Athlete(name, gender, weight, height, yearOfBirth);
-        System.out.println("You just added an athlete " + newAthlete);
+       System.out.print("Enter athlete's height (cm): ");
+       double height = scanner.nextDouble();
+
+       System.out.print("Enter athlete's year of birth: ");
+       int yearOfBirth = scanner.nextInt();
+       scanner.nextLine(); 
+
+       System.out.print("Set a password for the athlete: ");
+       String password = scanner.nextLine();
+
+       Athlete newAthlete = (new Athlete(name, gender, weight, height, yearOfBirth));
+       System.out.println("You just added an athlete " + newAthlete);
+
         
          int newId = giveId();
         athletes.put(newId, newAthlete);
@@ -187,7 +204,7 @@ public class Strava
 
     public void getDetailsMenu(){
         String choose = null;
-        Scanner scan =new Scanner(System.in);
+        
         while (choose == null){
             System.out.println("-------------------------------------------");  
             System.out.println("                   MENU");   
@@ -205,7 +222,7 @@ public class Strava
             }
             else if(value == 0){
                 mainMenu();
-                break;
+                scan.close();
             }
             else{
                 System.out.println("Invalid input");
