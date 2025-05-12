@@ -85,7 +85,7 @@ public class Strava
     
     private void newAthleteStrava(){
 
-       System.out.println("Enter athlete's name:");
+      System.out.println("Enter athlete's name:");
        String name = scan.nextLine();
        
        
@@ -150,13 +150,13 @@ public class Strava
        System.out.println("You just added an athlete " + newAthlete);
 
         
-         int newId = giveId();
+        int newId = giveId();
         athletes.put(newId, newAthlete);
         accounts.put(newAthlete, password);
         System.out.println("Athlete added with ID: " + newId);
         mainMenu();
 
-    }
+    }   
 
 
     private void newEquipmentStrava(){
@@ -280,7 +280,7 @@ public class Strava
               listAllAthletes();
             }
             else if(value == 2){
-                System.out.println("Boys");
+                allActivity();
             }
             else if(value == 3){
                 System.out.println("Boys");
@@ -369,7 +369,14 @@ public class Strava
            }
        }
     }
-
+    private void allActivity(){
+        System.out.println("List of all activity");
+        for(Athlete athlete : athletes.values()){
+            System.out.println("Athlete: " + athlete.getName());
+            athlete.displayAllMyActivities(); 
+            System.out.println();
+        }
+    }
     private void clearTerminal(){
         System.out.print('\u000c');
 
