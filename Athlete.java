@@ -58,7 +58,7 @@ public class Athlete
     System.out.println("Are you using equipment for this activity? (yes/no): ");
     String equipmentChoice = scan.nextLine().trim().toLowerCase();
 
-        if (equipmentChoice.equals("yes")) {
+    if (equipmentChoice.equals("yes")) {
             ArrayList<Equipment> availableEquipment = strava.getEquipment();  //arraylist of equipment extracted from strava
     
             System.out.println("Select equipment from the following list:");

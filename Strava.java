@@ -20,6 +20,7 @@ public class Strava
     {
         athletes = new HashMap<>();
         accounts = new HashMap<>();
+        equipment = new ArrayList<>();
     }
 
     public void startStrava(){
@@ -66,7 +67,7 @@ public class Strava
                 newAthleteStrava();
             } else if (menu == 2) {
                 clearTerminal();
-                Choice();
+                newEquipmentStrava();
             } else if (menu == 3) {
                 clearTerminal();
                 logIn();
@@ -119,7 +120,18 @@ public class Strava
 
 
     private void newEquipmentStrava(){
+        System.out.println("Enter the name of the equipement you like to use");
+        String name = scan.nextLine();
         
+        System.out.println("Enter the equipment weight");
+        double weight = scan.nextDouble();
+        
+        Equipment newEquip = new Equipment(name,weight);
+        equipment.add(newEquip);
+        
+        System.out.println("new equipement added: " + newEquip );
+        mainMenu();
+        clearTerminal();
     }
     
     private void logIn(){
@@ -151,16 +163,16 @@ public class Strava
     private void myAccount(Athlete athlete){
         boolean done=false;
         while (!done){
-        System.out.println("-------------------------------------------");  
-        System.out.println("                 MY ACCOUNT");   
-        System.out.println("-------------------------------------------"); 
-        System.out.println("[1] New activity");
-        System.out.println("[2] List all my activities");
-        System.out.println("[3] Calculate my total distance");
-        System.out.println("[4] Calculate my burned calories");
-        System.out.println("[5] My profile");
-        System.out.println("[0] Close my session");
-        int menu = scan.nextInt();
+            System.out.println("-------------------------------------------");  
+            System.out.println("                 MY ACCOUNT");   
+            System.out.println("-------------------------------------------"); 
+            System.out.println("[1] New activity");
+            System.out.println("[2] List all my activities");
+            System.out.println("[3] Calculate my total distance");
+            System.out.println("[4] Calculate my burned calories");
+            System.out.println("[5] My profile");
+            System.out.println("[0] Close my session");
+            int menu = scan.nextInt();
             scan.nextLine();
             if (menu == 1){
                 clearTerminal();
@@ -184,6 +196,7 @@ public class Strava
             }
         }
         mainMenu();
+        clearTerminal();
     }  
 
     private void getDetailsMenu(){
@@ -198,6 +211,7 @@ public class Strava
             System.out.println("[2] List all activities");
             System.out.println("[3] List all activities by athlete");
             System.out.println("[4] List all activities by mode");
+            System.out.println("[5] List all equipment");
             System.out.println("[0] Back");
             
             int value = scan.nextInt();
@@ -212,20 +226,34 @@ public class Strava
                 System.out.println("Boys");
             }
             else if(value == 4){
-                System.out.println("Boys");
+               System.out.println("Boys");
             }
+            
             else if(value == 0){
                 mainMenu();
+                clearTerminal();
                 break;
+            }
+            else if(value ==5){
+                clearTerminal();
+                ListEquipment();
             }
             else{
                 System.out.println("Invalid input");
             }
-            
         }
-
     }
-    
+    private void ListEquipment(){
+       System.out.println("List of all equipment"); 
+       if(equipment.isEmpty()){
+         System.out.println("no available equiment");
+       }
+       else{
+           for(Equipment eq : equipment){
+               System.out.println(eq);
+           }
+       }
+    }
     private void clearTerminal(){
         System.out.print('\u000c');
 
