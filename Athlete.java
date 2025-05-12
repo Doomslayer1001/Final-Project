@@ -65,10 +65,33 @@ public class Athlete
         return totalDistance;
     }
     
-       public double getTotalCaloriesBurned() {
-        double totalCalories = 0;
+        private double getMetValue(Modality modality) {
+        switch (modality) {
+            case RUNNING:
+                return 9.8;  
+            case BIKING:        //different MET values depending on the modality
+                return 7.5;  
+            case SWIMMING:
+                return 6.7;  
+            case WALKING:
+                return 4.0; 
+            default:
+                return 3.5;
+        }
+    }
+    
+    public double calculateCaloriesBurned(Activity activity) {
+        double MET = getMetValue(activity.getModality());  
+        double duration = activity.getDuration();  
+        double weight = this.weight;  
+        return (duration * MET * 3.5 * weight) / 200; //formula to get burned calories
+    }
+    
+    public double getTotalCaloriesBurned() {
+        double totalCalories = 0;   
+        // Loop through all activities of the athlete and adding em up
         for (Activity activity : activities) {
-            totalCalories += activity.getCaloriesBurned();
+            totalCalories += calculateCaloriesBurned(activity);
         }
         return totalCalories;
     }
@@ -79,7 +102,6 @@ public class Athlete
         System.out.println("Gender: "+ this.gender.toString());
         System.out.println("Height: "+height+" Weight: "+weight);
         System.out.println("Year of birth: "+ yearOfBirth);
-        System.out.println("My activities: "+activities);
     }
     
         @Override

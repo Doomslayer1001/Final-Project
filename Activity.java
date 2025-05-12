@@ -13,7 +13,7 @@ public class Activity
     private String description;        // Description of the activity
     private Modality modality;         
     private double duration;  
-    private double caloriesBurned; 
+
     private Athlete athlete;
     private ArrayList<String> activities;
     
@@ -24,7 +24,7 @@ public class Activity
         this.modality = modality;
 
         this.duration = duration;   
-        this.caloriesBurned = calculateCaloriesBurned();
+
     }
     
     public double getDistance()
@@ -51,32 +51,7 @@ public class Activity
     
     }
     
-     public double calculateCaloriesBurned() {
-        double met = 0;
 
-        switch (modality) {
-            case RUNNING:
-                met = 9.8;  
-                break;
-            case WALKING:
-                met = 3.8;  
-                break;
-            case BIKING:
-                met = 7.5;  
-                break;
-            default:
-                met = 1.0;  
-        }
-
-        
-        double weight = 75;  // Example weight in kg
-        
-        return (met * weight * 3.5 / 200) * duration;
-    }
-    
-    public double getCaloriesBurned() {
-        return caloriesBurned;
-    }
     public void totalDistance () {
         String myStrg = "Activity: " + modality + " | Distance: " + distance + " km | Athlete: " + athlete.getName();
         System.out.println(myStrg.toString());

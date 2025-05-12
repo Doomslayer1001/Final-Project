@@ -118,7 +118,6 @@ public class Strava
 
     }
 
-
     private void newEquipmentStrava(){
         System.out.println("Enter the name of the equipment you would like to use");
         String name = scan.nextLine();
@@ -182,10 +181,12 @@ public class Strava
                     athlete.displayAllMyActivities();
                 } else if (menu == 3) {
                     clearTerminal();
-                    athlete.getTotalDistance();                
+                    double tDistance=athlete.getTotalDistance();  
+                    System.out.println("My total distance: "+tDistance+" km");
                 } else if (menu == 4) {
                     clearTerminal();
-                    athlete.getTotalCaloriesBurned();
+                    double tCalories= athlete.getTotalCaloriesBurned();
+                     System.out.println("My total of burned calories: "+tCalories);
                 } else if (menu == 5) {
                    clearTerminal(); 
                    athlete.getAthleteInfo();
@@ -195,8 +196,8 @@ public class Strava
                     System.out.println("Invalid input");
                 }
         }
-        mainMenu();
         clearTerminal();
+        mainMenu();
     }  
 
     private void getDetailsMenu(){
@@ -230,8 +231,8 @@ public class Strava
             }
             
             else if(value == 0){
-                mainMenu();
                 clearTerminal();
+                mainMenu();
                 break;
             }
             else if(value ==5){
