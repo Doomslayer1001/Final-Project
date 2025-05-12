@@ -93,6 +93,7 @@ public class Strava
          int menu = scan.nextInt();
             scan.nextLine();
         if (menu == 1){
+                clearTerminal();
                 newAthleteStrava();
                 
             } else if (menu == 2) {
@@ -243,8 +244,8 @@ public class Strava
     }
     
     public void clearTerminal(){
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
+                System.out.print('\u000c');
+
     }
 
 }
