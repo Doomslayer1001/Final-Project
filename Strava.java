@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.ArrayList;
 /**
  * Write a description of class Strava here.
  *
@@ -9,12 +10,12 @@ import java.util.Scanner;
 public class Strava
 {
     private HashMap<Integer,Athlete> athletes;
-
     private HashMap<Athlete,String> accounts;
+    private ArrayList<String> equipment;
 
     private int idAthletes=0;
     private Athlete athlete;
-    private Scanner scan =new Scanner(System.in);
+    private final Scanner scan =new Scanner(System.in);
     public Strava()
     {
         athletes = new HashMap<>();
@@ -80,7 +81,7 @@ public class Strava
     }
 
         public void mainMenu(){
-        while (true){
+        
          System.out.println("-------------------------------------------");  
          System.out.println("                   MENU");   
          System.out.println("-------------------------------------------");
@@ -94,21 +95,17 @@ public class Strava
             scan.nextLine();
         if (menu == 1){
                 newAthleteStrava();
-                
             } else if (menu == 2) {
                 Choice();
             } else if (menu == 3) {
                 logIn();
-                break;
             } else if (menu == 4) {
                 getDetailsMenu();
             } else if (menu == 5) {
                 System.out.println("Thank you for using our service.");
-                break;
             } else {
                 System.out.println("Invalid input");
             }
-        }
     }
     
     public void newAthleteStrava(){
@@ -147,10 +144,9 @@ public class Strava
 
 
     public void newEquipmentStrava(){
-
-            
-    } 
-
+        
+    }
+    
     public void logIn(){
     System.out.println("-------------------------------------------");
     boolean loggedIn = false;

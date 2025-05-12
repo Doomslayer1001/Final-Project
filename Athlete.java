@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
+
 /**
  * Write a description of class Athlete here.
  *
@@ -36,7 +38,15 @@ public class Athlete
      }
     
     public void addActivity(){
-    //Activity activity = new Activity(); 
+        Scanner scan = new Scanner(System.in);
+        String answer;
+        while(true){
+            System.out.println("Would you like to choose an Equipment yes/no?");
+            answer= scan.nextLine().trim().toLowerCase();
+            if (answer.equals("yes")){
+                
+            }
+        } 
     }
     
     public void displayAllMyActivities(){
