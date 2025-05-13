@@ -380,16 +380,25 @@ public class Strava
         }
     }
     private void listActivityAthlete(){
+        scan.nextLine();
+        
         System.out.println("Enter athlete name: ");
         String name = scan.nextLine().trim();
-        for(Athlete athlete : athletes.values()){
+        
+        boolean found = false;
+        
+        for(Integer id : athletes.keySet()){
+            Athlete athlete = athletes.get(id);
             if(athlete.getName().equalsIgnoreCase(name)){
-                System.out.println("Activity for: " + name);
+                System.out.println("Activity for: " + athlete.getName());
                 athlete.displayAllMyActivities(); 
-                return;
+                found = true;
+                break;
             }
-            System.out.println("Athlete not found.");
         }
+        if(!found){
+                System.out.println("Athlete not found.");
+            }
     }
     private void clearTerminal(){
         System.out.print('\u000c');
