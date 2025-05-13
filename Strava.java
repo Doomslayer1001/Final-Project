@@ -87,10 +87,7 @@ public class Strava
 
       System.out.println("Enter athlete's name:");
        String name = scan.nextLine();
-       
-       
-       
-       
+     
        Gender gender = null;
        while(gender == null){
        
@@ -307,18 +304,34 @@ public class Strava
     
     private void addActivity(Athlete athlete){
 
+        double distance = -1;
+        while( distance <= 0){
         System.out.println("Enter the distance of the activity (in km): ");
-        double distance = scan.nextDouble();
-        scan.nextLine(); 
-    
+        
+        distance = scan.nextDouble(); 
+        if (distance <= 0){
+           System.out.println("Distance must be a positive number. Please try again.");
+       }
+    }
         System.out.println("Enter a description for the activity: ");
         String description = scan.nextLine();
     
+        
+        Modality modality= null;
+        while(modality == null){
         System.out.println("Enter the modality (WALKING,RUNNING, CYCLING, SWIMMING): ");
         String modalityInput = scan.nextLine().toUpperCase();
-        Modality modality = Modality.valueOf(modalityInput);
+        
+        try{
+         modality = Modality.valueOf(modalityInput);
+    }
+    catch( IllegalArgumentException e){
+    System.out.println("Invalid gender.Please enter WALKING,RUNNING, CYCLING,or SWIMMING.");
+    }
+    }
+        
     
-        System.out.println("Enter the duration of the activity (in minutes): ");
+         System.out.println("Enter the duration of the activity (in minutes): ");
         double duration = scan.nextDouble();
         scan.nextLine(); 
     
