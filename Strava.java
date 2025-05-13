@@ -83,7 +83,7 @@ public class Strava
 
     }
     
-    private void newAthleteStrava(){
+        private void newAthleteStrava(){
 
       System.out.println("Enter athlete's name:");
        String name = scan.nextLine();
@@ -94,10 +94,7 @@ public class Strava
        System.out.println("Enter athlete's gender(MALE,FEMALE,OTHER):");
        String genderInput = scan.nextLine().toUpperCase();
        try{
-         
-       
        gender = Gender.valueOf(genderInput);
-       
     } catch ( IllegalArgumentException e){
         System.out.println("Invalid gender.Please enter MALE,FEMALE, or OTHER.");
     }
@@ -216,7 +213,7 @@ public class Strava
     }
 }
 
-    private void myAccount(Athlete athlete){
+        private void myAccount(Athlete athlete){
         boolean done=false;
         while (!done){
             System.out.println("-------------------------------------------");  
@@ -278,13 +275,16 @@ public class Strava
               listAllAthletes();
             }
             else if(value == 2){
+                clearTerminal();
                 allActivity();
             }
             else if(value == 3){
+                clearTerminal();
                 listActivityAthlete();
             }
             else if(value == 4){
-               System.out.println("Boys");
+               clearTerminal();
+               listActiviyModality();
             }
             
             else if(value == 0){
@@ -428,6 +428,44 @@ if (equipmentChoice.equals("yes")) {
                 System.out.println("Athlete not found.");
             }
     }
+    
+    private void listActiviyModality(){
+        scan.nextLine();
+        
+        System.out.println("Enter modality(WALKING,RUNNING,CYCLING,SWIMMING): ");
+        String modalityInput = scan.nextLine().trim().toUpperCase();
+        Modality chosenModality= null;
+        for (Modality m : Modality.values()) {
+        if (m.name().equalsIgnoreCase(modalityInput)) {
+            chosenModality = m;
+            break;
+        }
+        }
+        
+        if(chosenModality == null){
+            System.out.println("Invalid modality entered");
+            return;
+        }
+        
+        boolean found = false;
+        
+        for(Integer id : athletes.keySet()){
+            Athlete athlete = athletes.get(id);
+            for (Activity activity : athlete.getActivities()){
+                if (activity.getModality() == chosenModality){
+                    if(!found){
+                        System.out.println("Activities with modality: " + chosenModality);
+                        found = true;
+                    }
+                    System.out.println("Athlete: " + athlete.getName() + "_" + activity);
+                }
+            }
+        }
+        if(!found){
+            System.out.println("No activities found for modality: " + modalityInput);
+        }
+    }
+    
     private void clearTerminal(){
         System.out.print('\u000c');
 
