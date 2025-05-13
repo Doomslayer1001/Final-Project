@@ -313,6 +313,8 @@ public class Strava
            System.out.println("Distance must be a positive number. Please try again.");
        }
     }
+    
+        scan.nextLine();
         System.out.println("Enter a description for the activity: ");
         String description = scan.nextLine();
     
@@ -326,50 +328,63 @@ public class Strava
          modality = Modality.valueOf(modalityInput);
     }
     catch( IllegalArgumentException e){
-    System.out.println("Invalid gender.Please enter WALKING,RUNNING, CYCLING,or SWIMMING.");
+    System.out.println("Invalid modality.Please enter WALKING,RUNNING, CYCLING,or SWIMMING.");
     }
     }
         
-    
+          double duration = -1;
+          while ( duration <= 0){
          System.out.println("Enter the duration of the activity (in minutes): ");
-        double duration = scan.nextDouble();
-        scan.nextLine(); 
+         duration = scan.nextDouble();
+         
+         if (distance <= 0){
+             System.out.println("Duration must be a positive number. Please try again.");
+         }
+         
+    }
+        scan.nextLine();
     
-        System.out.println("Are you using equipment for this activity? (yes/no): ");
-        String equipmentChoice = scan.nextLine().trim().toLowerCase();
-    
-            if (equipmentChoice.equals("yes")) {
-    
-                System.out.println("Select equipment from the following list:");
-                for (int i = 0; i < equipment.size(); i++) {
-                    System.out.println("[" + (i + 1) + "] " + equipment.get(i).getDescription());
-                }
+     System.out.println("Are you using equipment for this activity? (yes/no): ");
+String equipmentChoice = scan.nextLine().trim().toLowerCase();
+
+
+while (!equipmentChoice.equals("yes") && !equipmentChoice.equals("no")) {
+    System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+    equipmentChoice = scan.nextLine().trim().toLowerCase();
+}
+
+if (equipmentChoice.equals("yes")) {
+    System.out.println("Select equipment from the following list:");
+    for (int i = 0; i < equipment.size(); i++) {
+        System.out.println("[" + (i + 1) + "] " + equipment.get(i).getDescription());
+    }
+
+    System.out.print("Enter the number of the equipment you want to use: ");
+    int number = scan.nextInt();
+    scan.nextLine();  
+
+    if (number > 0 && number <= equipment.size()) {
+        Equipment selectedEquipment = equipment.get(number - 1);
         
-                System.out.print("Enter the number of the equipment you want to use: ");
-                int number = scan.nextInt();
-                scan.nextLine();  
-        
-                if (number > 0 && number <= equipment.size()) {
-                    Equipment selectedEquipment = equipment.get(number - 1);
-                    
-                    PowActivity powActivity = new PowActivity(distance, description, modality, duration);
-                    powActivity.chooseEquipment(selectedEquipment);
-                    athlete.getActivities().add(powActivity);
-                    clearTerminal();
-                    System.out.println("New Powered Activity created with equipment: " + selectedEquipment.getDescription());
-                } else {
-                    System.out.println("Invalid equipment choice! Creating a regular activity instead...");
-                    Activity activity = new Activity(distance, description, modality, duration);
-                    athlete.getActivities().add(activity);
-                    clearTerminal();
-                    System.out.println("New regular Activity created");
-                }
-            } else {
-                Activity activity = new Activity(distance, description, modality, duration);
-                athlete.getActivities().add(activity);
-                clearTerminal();
-                System.out.println("New regular Activity created");
-            }
+        PowActivity powActivity = new PowActivity(distance, description, modality, duration);
+        powActivity.chooseEquipment(selectedEquipment);
+        athlete.getActivities().add(powActivity);
+        clearTerminal();
+        System.out.println("New Powered Activity created with equipment: " + selectedEquipment.getDescription());
+    } else {
+        System.out.println("Invalid equipment choice! Creating a regular activity instead...");
+        Activity activity = new Activity(distance, description, modality, duration);
+        athlete.getActivities().add(activity);
+        clearTerminal();
+        System.out.println("New regular Activity created");
+    }
+} else {
+    Activity activity = new Activity(distance, description, modality, duration);
+    athlete.getActivities().add(activity);
+    clearTerminal();
+    System.out.println("New regular Activity created");
+}
+
     }
     
     private void ListEquipment(){
