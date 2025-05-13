@@ -26,7 +26,12 @@ public class Activity
         this.duration = duration;   
 
     }
-    
+    public String toString() {
+        return "Description: " + description +
+           ", Distance: " + distance + " km" +
+           ", Duration: " + duration + " min" +
+           ", Modality: " + modality.toString().toLowerCase();
+    }
     public double getDistance()
 
     {        

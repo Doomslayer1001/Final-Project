@@ -28,7 +28,7 @@ public class Athlete
         this.activities = new ArrayList<>();
 
     }
-    
+   
     public String getName(){
      return this.name;
     }
@@ -112,4 +112,5 @@ public class Athlete
     public ArrayList<Activity> getActivities() {
         return activities;
     }
+
 }
