@@ -3,10 +3,12 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * Write a description of class Athlete here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Respresents an Athlete who can perform various activities 
+ *Stores personal information and tracks activity-related data such as distance and calories burned.
+ * @author (Laura Valentina Trujillo Diaz , Danush Soosai and Keny-John Shamba)
+ * @version (5/16/2025)
+ * 
+ * 
  */
 public class Athlete
 {
@@ -18,6 +20,9 @@ public class Athlete
     private double height;
     private int yearOfBirth; 
     
+    /**
+     * Constructor of the Athlete class 
+     */
     public Athlete(String name, Gender gender, double weight,double height, int yearOfBirth) {
         
         this.name = name;
@@ -29,14 +34,24 @@ public class Athlete
 
     }
    
+    
+    /**
+     * Get the name of the athlete
+     */
     public String getName(){
      return this.name;
     }
     
+    /**
+     * Get the weight of the Athlete
+     */
     public double getWeight(){
         return this.weight;
      }
     
+    /**
+     *Displays all activities performed by the athlete, including descriptions and additional information if applicable.
+     */
     public void displayAllMyActivities(){
     System.out.println("My activities are: ");
     for (Activity a : activities) {
@@ -57,6 +72,9 @@ public class Athlete
     }
     }
     
+    /**
+     * Get the total of the distance
+     */
     public double getTotalDistance() {
         double totalDistance = 0;
         for (Activity activity : activities) {
@@ -65,7 +83,10 @@ public class Athlete
         return totalDistance;
     }
     
-        private double getMetValue(Modality modality) {
+    /**
+     * Returns the MET (Metabolic Equivalent of Task) value for a given modality.
+     */  
+    private double getMetValue(Modality modality) {
         switch (modality) {
             case RUNNING:
                 return 9.8;  
@@ -79,7 +100,9 @@ public class Athlete
                 return 3.5;
         }
     }
-    
+    /**
+     *  Calculates the number of calories burned for a given activity based on the athlete's weight and activity duration.
+     */
     public double calculateCaloriesBurned(Activity activity) {
         double MET = getMetValue(activity.getModality());  
         double duration = activity.getDuration();  
@@ -87,6 +110,10 @@ public class Athlete
         return (duration * MET * 3.5 * weight) / 200; //formula to get burned calories
     }
     
+    /**
+     * Calculates the total number of calories burned by the athlete across all activities.
+     * @return the total calories burned
+     */
     public double getTotalCaloriesBurned() {
         double totalCalories = 0;   
         // Loop through all activities of the athlete and adding em up
@@ -96,6 +123,9 @@ public class Athlete
         return totalCalories;
     }
     
+    /**
+     * Displays the personal information of the athlete
+     */
     public void getAthleteInfo()
     {
         System.out.println("Name: "+ this.name);
@@ -109,6 +139,10 @@ public class Athlete
         return this.name;  
     }
     
+    /**
+     * Returns the list of activities performed by the athlete.
+     * @return list of activities
+     */
     public ArrayList<Activity> getActivities() {
         return activities;
     }
