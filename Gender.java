@@ -1,9 +1,10 @@
 
 /**
- * Enumeration class Gender - write a description of the enum class here
+ * Enumeration class Gender 
+ * Different genders that an athlete could have.
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author (Laura Valentina Trujillo Diaz , Danush Soosai and Keny-John Shamba)
+ * @version (5/16/2025)
  */
 public enum Gender
 {

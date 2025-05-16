@@ -1,9 +1,10 @@
 
 /**
- * Enumeration class Modality - write a description of the enum class here
+ * Enumeration class Modality 
+ * Modality for the activites
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author (Laura Valentina Trujillo Diaz , Danush Soosai and Keny-John Shamba)
+ * @version (5/16/2025)
  */
 public enum Modality
 {
