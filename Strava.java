@@ -2,10 +2,12 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.ArrayList;
 /**
- * Write a description of class Strava here.
+ * Strava class has the main methods to manage and show
+ * different activities like running, walking, swimming, and cycling.
+ * It helps record and work with fitness data from the user.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Laura,Danush and Kenny-jhon
+ * @version 1.0
  */
 public class Strava
 {
@@ -31,15 +33,25 @@ public class Strava
              
     }
     
+    /**
+     * Main method that allows to run this project outside of bluejay
+     */
     public static void main(String[] args){
         (new Strava()).startStrava();
     }
    
+    /**
+     * Starts the Strava app by clearing the screen and showing the main menu.
+     */
     public void startStrava(){
         clearTerminal();
         mainMenu();
     }
     
+    /**
+     * Shows a list of all athletes added so far,
+     * displaying their ID and name.
+     */
     private void listAllAthletes()
     {
         System.out.println("Found athletes are: "); 
@@ -48,12 +60,21 @@ public class Strava
             System.out.println("Id: " +id + " Name: "+ athletes.get(id));
         }
     }
-
+    
+    /**
+     * Creates and returns a new ID for a new athlete.
+     * 
+     * @return a unique ID number.
+     */
     private int giveId(){
         idAthletes++;    
         return idAthletes;    
     }
-
+    
+    /**
+     * Shows the menu and runs what the user picks,
+     * like adding an athlete or logging in.
+     */
     private void mainMenu(){
          System.out.println("-------------------------------------------");  
          System.out.println("                   MENU");   
@@ -87,6 +108,11 @@ public class Strava
 
     }
     
+    /**
+     * Lets the user create a new athlete by entering name, gender,
+     * weight, height, year of birth, and a password. Then saves the
+     * athlete with a new ID.
+     */
         private void newAthleteStrava(){
 
       System.out.println("Enter athlete's name:");
@@ -155,7 +181,12 @@ public class Strava
         mainMenu();
 
     }   
-
+    
+    /**
+     * Lets the user create a new athlete by entering name, gender,
+     * weight, height, year of birth, and a password. Then saves the
+     * athlete with a new ID.
+     */
     private void newEquipmentStrava(){
         System.out.println("Enter the name of the equipment you would like to use");
         String name = scan.nextLine();
@@ -170,7 +201,11 @@ public class Strava
         mainMenu();
         clearTerminal();
     }
-    
+   
+    /**
+     * Lets a user log in by entering a username and password.
+     * If correct, it opens their account menu.
+     */
    private void logIn() {
     System.out.println("-------------------------------------------");
     boolean loggedIn = false;
@@ -215,8 +250,14 @@ public class Strava
             }
         }
     }
-}
+    }
 
+    /**
+     * Shows options for the logged-in athlete like adding activities,
+     * seeing total distance, calories, or profile.
+     *
+     * @param athlete the logged-in user
+     */
         private void myAccount(Athlete athlete){
         boolean done=false;
         while (!done){
@@ -258,6 +299,10 @@ public class Strava
         mainMenu();
     }  
 
+    /**
+     * Shows a menu to list details like all athletes, activities,
+     * or equipment.
+     */
     private void getDetailsMenu(){
         String choose = null;
         
@@ -306,6 +351,12 @@ public class Strava
         }
     }
     
+    /**
+     * Adds a new activity for the given athlete. 
+     * The user can enter details like distance, time, and equipment.
+     *
+     * @param athlete the user who is doing the activity
+     */
     private void addActivity(Athlete athlete){
 
         double distance = -1;
@@ -391,6 +442,9 @@ if (equipmentChoice.equals("yes")) {
 
     }
     
+    /**
+     * Shows a list of all equipment that has been added.
+     */
     private void ListEquipment(){
        System.out.println("List of all equipment"); 
        if(equipment.isEmpty()){
@@ -403,6 +457,9 @@ if (equipmentChoice.equals("yes")) {
        }
     }
     
+    /**
+     * Shows all activities from all athletes.
+     */
     private void allActivity(){
         System.out.println("List of all activity");
         for(Athlete athlete : athletes.values()){
@@ -411,6 +468,10 @@ if (equipmentChoice.equals("yes")) {
             System.out.println();
         }
     }
+    
+    /**
+     * Shows all activities for a given athlete by name.
+     */
     private void listActivityAthlete(){
         scan.nextLine();
         
@@ -433,6 +494,9 @@ if (equipmentChoice.equals("yes")) {
             }
     }
     
+    /**
+     * Shows all activities of a certain type (like RUNNING or SWIMMING).
+     */
     private void listActiviyModality(){
         scan.nextLine();
         
@@ -470,6 +534,9 @@ if (equipmentChoice.equals("yes")) {
         }
     }
     
+    /**
+     * Clears the terminal screen.
+     */
     private void clearTerminal(){
         System.out.print('\u000c');
 
