@@ -30,6 +30,10 @@ public class Strava
         equipment.add(poll);
              
     }
+    
+    public static void main(String[] args){
+        (new Strava()).startStrava();
+    }
    
     public void startStrava(){
         clearTerminal();
