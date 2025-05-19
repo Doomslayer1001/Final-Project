@@ -70,9 +70,7 @@ public class StravaTest
         assertEquals(expectedTotal, athlete.getTotalDistance(), 0.01);
     }
 
-    @Test
-    public void Strava1()
-    {
-    }
+     
 }
+
 
