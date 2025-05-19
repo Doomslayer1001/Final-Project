@@ -30,7 +30,61 @@ public class Strava
         equipment.add(skate);
         Equipment poll = new Equipment("Poll (depending on the weight of the person)", 0);
         equipment.add(poll);
-             
+        Equipment shoes = new Equipment("Shoes" , 1.2);
+        equipment.add(shoes);
+        
+        Athlete athlete1 = new Athlete("Alice", Gender.FEMALE, 60.5, 165.0, 2002);
+        int id1 = giveId(); // from your method
+        athletes.put(id1, athlete1);
+        accounts.put(athlete1, "alice123");
+        Athlete athlete2 = new Athlete("Ben", Gender.MALE, 75.0, 180.0, 1998);
+        int id2 = giveId();
+        athletes.put(id2, athlete2);
+        accounts.put(athlete2, "ben123");
+        Athlete athlete3 = new Athlete("Charlie", Gender.OTHER, 68.2, 172.5, 2000);
+        int id3 = giveId();
+        athletes.put(id3, athlete3);
+        accounts.put(athlete3, "charlie123");
+        
+        athlete1.getActivities().add(new Activity(5.0, "Morning walk in the park", Modality.WALKING, 45));
+        athlete1.getActivities().add(new Activity(2.5, "Short swim session", Modality.SWIMMING, 30));
+        athlete1.getActivities().add(new Activity(8.0, "Weekend bike ride", Modality.BIKING, 60));
+        athlete1.getActivities().add(new Activity(3.0, "Evening jog", Modality.RUNNING, 35));
+        athlete1.getActivities().add(new Activity(10.0, "Charity run", Modality.RUNNING, 70)); 
+        PowActivity alicePow1 = new PowActivity(4.0, "Running in the park", Modality.RUNNING, 30);
+        alicePow1.chooseEquipment(shoes);
+        athlete1.getActivities().add(alicePow1);
+        
+        PowActivity alicePow2 = new PowActivity(6.0, "Skating downtown", Modality.BIKING, 40);
+        alicePow2.chooseEquipment(skate);
+        athlete1.getActivities().add(alicePow2);
+        
+        athlete2.getActivities().add(new Activity(20.0, "Long cycling tour", Modality.BIKING, 90));
+        athlete2.getActivities().add(new Activity(4.0, "Afternoon jog", Modality.RUNNING, 40));
+        athlete2.getActivities().add(new Activity(1.0, "Pool laps", Modality.SWIMMING, 25));
+        athlete2.getActivities().add(new Activity(6.0, "Brisk walk with dog", Modality.WALKING, 50));
+        athlete2.getActivities().add(new Activity(7.5, "Run in the forest", Modality.RUNNING, 55));
+        athlete2.getActivities().add(new Activity(3.2, "Light walk", Modality.WALKING, 30));
+        PowActivity benPow1 = new PowActivity(18.0, "Mountain biking session", Modality.BIKING, 70);
+        benPow1.chooseEquipment(bike);
+        athlete2.getActivities().add(benPow1);
+
+        athlete3.getActivities().add(new Activity(10.0, "City bike commute", Modality.BIKING, 40));
+        athlete3.getActivities().add(new Activity(5.0, "Beach walk", Modality.WALKING, 60));
+        athlete3.getActivities().add(new Activity(3.0, "Sprint practice", Modality.RUNNING, 25));
+        athlete3.getActivities().add(new Activity(2.5, "Swim training", Modality.SWIMMING, 35));
+        athlete3.getActivities().add(new Activity(12.0, "Biking uphill", Modality.BIKING, 70));
+        athlete3.getActivities().add(new Activity(4.2, "Relaxed jog", Modality.RUNNING, 38));
+        athlete3.getActivities().add(new Activity(2.0, "Warm-up walk", Modality.WALKING, 20));   
+        PowActivity charliePow1 = new PowActivity(5.5, "Jogging with ski poles", Modality.RUNNING, 35);
+        charliePow1.chooseEquipment(poll);
+        athlete3.getActivities().add(charliePow1);
+        
+        PowActivity charliePow2 = new PowActivity(11.0, "City bike race", Modality.BIKING, 55);
+        charliePow2.chooseEquipment(bike);
+        athlete3.getActivities().add(charliePow2);
+        
+        System.out.println("Default athletes and equipment have been created, please close this terminal and call the startStrava method.");
     }
     
     /**
